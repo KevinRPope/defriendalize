@@ -1,0 +1,27 @@
+
+<% if session[:user_id] -%>
+<% title "Your friend change list" -%>
+<ul class="change_list">
+<% @connections.each do |connection| %>
+
+
+  <% if connection.last_action == 'defriend'%>
+	<li>
+	<div class="error">
+	<span class="error"></span>
+  <% else %>
+	<div class="notice">
+	<span class="notice"></span>
+  <% end %>
+  		<%= connection.friend_name %>:
+		<%= connection.last_action.capitalize %>
+	</div>
+	<div class="clear"></div>
+	</li>
+	
+  <% end -%>
+</ul>
+<% else -%>
+<% title "Login to see any changes to your friend list!"%>
+	LOGIN!
+<% end -%>

@@ -1,0 +1,24 @@
+<h2>Your Profile Information</h2>
+<ul class="change_list">
+	<li class="profile_info">
+		<%= image_tag(user.profile_picture)%>
+	</li>
+	<li class="profile_info">
+		Name: <%= user.name -%>
+	</li>
+	<li class="profile_info">
+		Gender: <%= user.gender.capitalize -%>
+	</li>
+	<li class="profile_info">
+		Email Address: <%= user.email -%>
+	</li>
+	<li class="profile_info">
+		Birthdate: <%= user.birthdate -%>
+	</li>
+	<li class="profile_info">
+		Friends: <%= friend_count -%>
+	</li>
+	<li class="profile_info">
+		?Interests: <strong>Include Number of Interests Here?</strong>
+	</li>
+</ul>

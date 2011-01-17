@@ -1,0 +1,46 @@
+.notice,
+.warning,
+.error {
+  font-size: 18px;
+  padding: 15px 10px;
+  margin-bottom:-20px;
+  width:400px;
+}
+
+.notice span,
+.warning span,
+.error span {
+  float: left;
+  width: 42px;
+  height: 32px;
+  margin-top:-5px;
+}
+
+.notice {
+  background: url(../images/flash-notice-bg.jpg) repeat-x left top;
+  color: #41612f; 
+  border:#41612f 1px solid;
+}
+.notice span {
+  background: url(../images/flash-check.png) no-repeat left top;
+  border:none;
+}
+
+.warning {
+  background: url(../images/flash-warning-bg.jpg) repeat-x left -10px;
+  color: #a26a1a;
+}
+.warning span {
+  margin-top: -6px;
+  background: url(../images/flash-warning.png) no-repeat left top;
+}
+
+.error {
+  background: url(../images/flash-error-bg.jpg) repeat-x left -10px;
+  border:#af0100 1px solid;
+  color: #af0100;
+}
+.error span {
+  background: url(../images/flash-error.png) no-repeat left top;
+  border:none;
+}

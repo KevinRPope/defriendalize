@@ -1,0 +1,29 @@
+<%= form_for(@connection) do |f| %>
+  <% if @connection.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@connection.errors.count, "error") %> prohibited this connection from being saved:</h2>
+
+      <ul>
+      <% @connection.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_facebook_id %><br />
+    <%= f.text_field :user_facebook_id %>
+  </div>
+  <div class="field">
+    <%= f.label :friend_facebook_id %><br />
+    <%= f.text_field :friend_facebook_id %>
+  </div>
+  <div class="field">
+    <%= f.label :last_action %><br />
+    <%= f.text_field :last_action %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
