@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     if session[:user_id]
       #Connection.profile_pic(User.find(session[:user_id]))
       
-      @connections = Connection.where("user_facebook_id = #{@user.uid} and last_action != \'create\'").limit(10).all
+      @connections = Connection.where(:user_facebook_id => @user.uid, :last_action => ['cancelled', 'defriend', 'new']).limit(10).all
       @user = User.find(session[:user_id])
-      @friend_count = Connection.where("user_facebook_id = #{@user.uid} AND (last_action = \'create\' OR last_action = \'new\')").count
+      @friend_count = Connection.where(:user_facebook_id => @user.uid, :last_action => ['create', 'new']).count
     end
     respond_to do |format|
       format.html # index.html.erb

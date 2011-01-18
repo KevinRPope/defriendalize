@@ -20,7 +20,7 @@ class Connection < ActiveRecord::Base
   def self.check_connections(user)
     new_friend_data = talk_to_facebook(user, "friends")
     new_array = Array.new
-    old_friend_data = Connection.where("last_action='create' OR last_action='new'").find_all_by_user_facebook_id(user.uid, :select => "friend_facebook_id")
+    old_friend_data = Connection.where(:last_action => ['create', 'new']).find_all_by_user_facebook_id(user.uid, :select => "friend_facebook_id")
     old_array = Array.new
     old_friend_data.each do |o|
       old_array << o.friend_facebook_id

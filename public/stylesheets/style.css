@@ -32,11 +32,6 @@ body {
 	font: 18px arial, sans-serif;	
 	padding:8px;
 }
-.parsed-sites{
-	float:left;
-	text-align: left;
-	padding:10px;
-}
 .faq_question{
 	font-style:bold;
 	font-size:18px;
@@ -89,25 +84,4 @@ li{
 .omniauth_button{
 	margin:10px;
 	border:0px	;
-}
-
-.red{
-	color:#f00;
-}
-.red a { color: #f00; }
-.red a:visited { color: #f00; }
-.red a:hover { color: #f00; background-color:#fff; }
-
-.no_ereader{
-	padding:10px;
-	border:1px solid #f00;
-}
-.yes_ereader{
-	padding:10px;
-	border:1px solid #fff;
-}
-.images_checkbox{
-	width:190px;
-	text-align:right;
-	padding:5px;
 }

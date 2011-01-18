@@ -6,9 +6,8 @@
 <% else%>
 	<% connections.each do |connection| %>
 
-
+	<li>
 	  <% if connection.last_action == 'defriend'%>
-		<li>
 		<div class="error">
 		<span class="error"></span>
 	  <% else %>
@@ -19,7 +18,7 @@
 			<%= connection.last_action.capitalize %>
 		</div>
 		<div class="clear"></div>
-		</li>
+	</li>
 
 	  <% end -%>
 	</ul>

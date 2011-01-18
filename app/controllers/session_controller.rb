@@ -5,11 +5,11 @@ class SessionController < ApplicationController
     user = User.find_by_uid(auth["uid"]) 
     if user
       Connection.check_connections(user)
-      #Interest.check_interests(user)
+      Interest.check_interests(user)
     else
       user = User.create_with_omniauth(auth)
       Connection.create_connections(user)
-      #Interest.create_interests(user)
+      Interest.create_interests(user)
     end
     User.get_profile_pic(user) 
     session[:user_id] = user.id
