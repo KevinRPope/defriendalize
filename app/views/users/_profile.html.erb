@@ -1,20 +1,30 @@
 <h2>Your Profile Information</h2>
 <ul class="change_list">
+	<% unless user.profile_picture.nil? -%>
 	<li class="profile_info">
 		<%= image_tag(user.profile_picture)%>
 	</li>
+	<% end -%>
+	<% unless user.name.nil? -%>
 	<li class="profile_info">
 		Name: <%= user.name -%>
 	</li>
+	<% end -%>
+	<% unless user.gender.nil? -%>
 	<li class="profile_info">
 		Gender: <%= user.gender.capitalize -%>
 	</li>
+	<% end -%>
+	<% unless user.email.nil? -%>
 	<li class="profile_info">
 		Email Address: <%= user.email -%>
 	</li>
+	<% end -%>
+	<% unless user.birthdate.nil? -%>
 	<li class="profile_info">
 		Birthdate: <%= user.birthdate -%>
 	</li>
+	<% end -%>
 	<li class="profile_info">
 		Friends: <%= friend_count -%>
 	</li>
