@@ -8,14 +8,15 @@ body {
 .main-holder {
 	background-color: #696969; 
 	font: 16px arial, sans-serif;
-	width:80%;
+	width:70%;
+	float:left;
 	margin: 0px auto;
 }
 .main-content{
 	background-color: #fff;
 	padding:10px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
 }
 .friend_list_holder{
 	background-color:#fff;
@@ -53,8 +54,8 @@ h1 {
 	float:left;
 	margin: 10px 10px 10px 0px;
 	padding: 10px 20px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
 }
 .sign-in-area{
 	text-align:center;
@@ -63,8 +64,38 @@ h1 {
 	float:right;
 	margin: 10px 0px;
 	padding: 10px 20px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.left-holder {
+	font:16px arial, sans-serif;
+	width:15%;
+	float:left;
+}
+.left-nav-holder{
+	padding-top:50px;
+	width:100%;
+}
+.left-nav-button{  /* top right bottom left */
+	text-align:center;
+	background-color: #fff;
+	width:70%;
+	margin: 10px;
+	padding: 10px 20px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+.search_result{
+	padding:10px;
+}
+.status_box{
+	width:50px;
+	text-align:left;
+	margin:3px;
+	padding:8px 10px;
+	background-color: #bff;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
 }
 .username {
 	font-weight:bold;

@@ -1,13 +1,27 @@
 class User < ActiveRecord::Base
-  has_many :connections#, :dependent => :destroy
-  has_many :interests#, :dependent => :destroy
+  has_many :connections, :dependent => :destroy
+  has_many :interests, :dependent => :destroy
+  has_many :educations, :dependent => :destroy
   
   #  after_save {|record| p record.friend_name.to_s + " was saved successfully to the Connections table" }
-  before_destroy :remove_other_entries
+  #before_destroy :remove_other_entries
   
   def remove_other_entries
       Connection.delete_all("user_facebook_id = #{self.uid}")
       Interest.delete_all("user_facebook_id = #{self.uid}")
+  end
+  
+  def self.transfer_userids
+    connections = Connection.all
+    connections.each do |c|
+      c.user_id = User.find_by_uid(c.user_facebook_id).id
+      c.save!
+    end
+    interests = Interest.all
+    interests.each do |c|
+      c.user_id = User.find_by_uid(c.user_facebook_id).id
+      c.save!
+    end
   end
   
   def self.create_with_omniauth(auth)
@@ -18,6 +32,8 @@ class User < ActiveRecord::Base
       user.gender = auth["extra"]["user_hash"]["gender"]
       user.birthdate = auth["extra"]["user_hash"]["birthday"]
       user.access_token = auth["credentials"]["token"]
+      user.relationship_status = auth["extra"]["user_hash"]["relationship_status"]
+      user.location = auth["extra"]["user_hash"]["location"]["name"]
     end
   end
 =begin

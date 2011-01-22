@@ -14,8 +14,8 @@ class Connection < ActiveRecord::Base
         :last_action => "create")
     end
     Connection.import connections, :validate => false
-          
   end
+  #handle_asynchronously :create_connections
 
   def self.check_connections(user)
     new_friend_data = talk_to_facebook(user, "friends")
@@ -40,16 +40,6 @@ class Connection < ActiveRecord::Base
       c.save
     end
 
-=begin
-    new_friends.each do |friend|
-      connections << Connection.new(
-        :user_facebook_id => user.uid,
-        :friend_facebook_id => friend,
-        :friend_name => new_friend_data["data"].select{|hash| hash["id"] == friend.to_s}[0]["name"],
-        :last_action => "new")
-    end
-    Connection.import connections unless connections.nil?
-=end    
     defriend = (old_array - new_array)
     defriend.each do |friend|
       friend_in_db = Connection.find_by_user_facebook_id_and_friend_facebook_id(user.uid, friend)
@@ -60,9 +50,9 @@ class Connection < ActiveRecord::Base
       end
       friend_in_db.save
     end
-#    flash[:notice] = "You have #{pluralize(new_friends.length, 'new friend')} and #{pluralize(defriend.length, 'defriending')}"
   end
-      
+  #handle_asynchronously :check_connections
+
 private
 
   def self.talk_to_facebook(user, info)

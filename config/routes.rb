@@ -1,10 +1,11 @@
 Defriend::Application.routes.draw do
+  get "search/index", :as => :search_index
+
   resources :users
   match 'auth/facebook/callback' => "session#create"
   match 'auth/failure' => 'session#FAQ'  #change this to a page asking why they said no.
   match 'FAQ' => 'session#FAQ', :as => :faq
   get "session/create"
-
   get "session/destroy"
 
   resources :connections

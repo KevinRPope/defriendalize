@@ -4,14 +4,14 @@ class SessionController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.find_by_uid(auth["uid"]) 
     if user
-      Connection.check_connections(user)
-      Interest.check_interests(user)
+      #Connection.delay.check_connections(user)
+      #Interest.delay.check_interests(user)
     else
       user = User.create_with_omniauth(auth)
-      Connection.create_connections(user)
-      Interest.create_interests(user)
+      #Connection.delay.create_connections(user)
+      #Interest.delay.create_interests(user)
     end
-    User.get_profile_pic(user) 
+    #User.delay.get_profile_pic(user) 
     session[:user_id] = user.id
     redirect_to root_path, :notice => "Signed in!"
   end
