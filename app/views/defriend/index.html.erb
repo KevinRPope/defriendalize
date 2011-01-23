@@ -1,0 +1,11 @@
+<% if session[:user_id] -%>
+  <div class="friend_list_holder">
+	<%= render :partial => "/defriend/friend_list", :locals => { :connections => @connections} -%>
+  </div>
+  
+  <div class="clear"></div>
+  <%= link_to 'Delete Your Account', @user, :confirm => "Are you SURE you want to delete your account? \n\nYou won\'t be able to track the changes in your friend list and the entire history we've accumulated will be deleted as well.\n\nThere is no way to undo this action!", :method => :delete %>
+<% else -%>
+	<% title "Login to see any changes to your friend list!"%>
+	LOGIN!
+<% end -%>

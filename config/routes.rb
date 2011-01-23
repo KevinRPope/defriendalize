@@ -1,4 +1,6 @@
 Defriend::Application.routes.draw do
+  get "defriend/index"
+
   get "search/index", :as => :search_index
 
   resources :users
@@ -11,7 +13,7 @@ Defriend::Application.routes.draw do
   resources :connections
   
   match 'signout' => "session#destroy", :as => :signout
-  root :to => "users#index"
+  root :to => "defriend#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

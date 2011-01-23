@@ -1,29 +1,17 @@
 class UsersController < ApplicationController
-  #before_filter :authorize, :except => :index
+  before_filter :authorize, {:except => [:destroy, :new, :create, :update, :edit]}
   
   # GET /users
   # GET /users.xml
   def index
-    if session[:user_id]
-      #Connection.profile_pic(User.find(session[:user_id]))
-      ENV.each do |e|
-        p e
-      end
-      @connections = Connection.where(:user_facebook_id => @user.uid, :last_action => ['cancelled', 'defriend', 'new']).limit(10).all
-      @user = User.find(session[:user_id])
-      @friend_count = Connection.where(:user_facebook_id => @user.uid, :last_action => ['create', 'new']).count
-    end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
-    end
+    @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
-    User.transfer_userids
+    @user = User.find(session[:user_id])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -43,7 +31,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
 
   # POST /users
@@ -65,7 +53,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

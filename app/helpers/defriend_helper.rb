@@ -1,0 +1,2 @@
+module DefriendHelper
+end

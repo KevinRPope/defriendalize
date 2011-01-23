@@ -10,20 +10,7 @@ class User < ActiveRecord::Base
       Connection.delete_all("user_facebook_id = #{self.uid}")
       Interest.delete_all("user_facebook_id = #{self.uid}")
   end
-  
-  def self.transfer_userids
-    connections = Connection.all
-    connections.each do |c|
-      c.user_id = User.find_by_uid(c.user_facebook_id).id
-      c.save!
-    end
-    interests = Interest.all
-    interests.each do |c|
-      c.user_id = User.find_by_uid(c.user_facebook_id).id
-      c.save!
-    end
-  end
-  
+    
   def self.create_with_omniauth(auth)
     create! do |user|
       user.uid = auth["uid"]

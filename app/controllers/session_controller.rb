@@ -9,6 +9,7 @@ class SessionController < ApplicationController
     else
       user = User.create_with_omniauth(auth)
       #Connection.delay.create_connections(user)
+      #Education.delay.create_education(user, auth)
       #Interest.delay.create_interests(user)
     end
     #User.delay.get_profile_pic(user) 

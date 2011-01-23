@@ -8,8 +8,8 @@ body {
 .main-holder {
 	background-color: #696969; 
 	font: 16px arial, sans-serif;
-	width:70%;
-	float:left;
+	width:80%;
+	/*float:left;*/
 	margin: 0px auto;
 }
 .main-content{
