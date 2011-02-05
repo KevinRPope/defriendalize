@@ -1,40 +1,43 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Uid:</b>
-  <%= @user.uid %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Gender:</b>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <b>Birthdate:</b>
-  <%= @user.birthdate %>
-</p>
-
-<p>
-  <b>Interests:</b>
-  <%= @user.interests %>
-</p>
-
-<p>
-  <b>Access token:</b>
-  <%= @user.access_token %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h2>Your Profile Information</h2>
+<ul class="change_list">
+	<% unless @user.profile_picture.nil? -%>
+	<li class="profile_info">
+		<%= image_tag(@user.profile_picture)%>
+	</li>
+	<% end -%>
+	<% unless @user.name.nil? -%>
+	<li class="profile_info">
+		Name: <%= @user.name -%>
+	</li>
+	<% end -%>
+	<% unless @user.gender.nil? -%>
+	<li class="profile_info">
+		Gender: <%= @user.gender.capitalize -%>
+	</li>
+	<% end -%>
+	<% unless @user.location.nil? -%>
+	<li class="profile_info">
+		Location: <%= @user.location.capitalize -%>
+	</li>
+	<% end -%>
+	<% unless @user.relationship_status.nil? -%>
+	<li class="profile_info">
+		Relationship Status: <%= @user.relationship_status.capitalize -%>
+	</li>
+	<% end -%>
+	<% unless @user.email.nil? -%>
+	<li class="profile_info">
+		Email Address: <%= @user.email -%>
+	</li>
+	<% end -%>
+	<% unless @user.birthdate.nil? -%>
+	<li class="profile_info">
+		Birthdate: <%= @user.birthdate -%>
+	</li>
+	<% end -%>
+	<li class="profile_info">
+		Friends: <%= @friend_count -%>
+	</li>
+	  <%= link_to 'Delete Your Account', delete_account_path -%>
+</ul>

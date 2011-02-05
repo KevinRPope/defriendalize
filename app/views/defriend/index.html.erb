@@ -1,10 +1,40 @@
 <% if session[:user_id] -%>
   <div class="friend_list_holder">
 	<%= render :partial => "/defriend/friend_list", :locals => { :connections => @connections} -%>
+</div>
+
+<!-->This should be moved into the application layout file: <-->
+  <div class="rhs_ads_holder">
+	<div class="rhs_ad">
+		<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-8483198159213092";
+		/* My First Ad */
+		google_ad_slot = "8077774818";
+		google_ad_width = 300;
+		google_ad_height = 250;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+	</div>
+	<div class="rhs_ad">
+		<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-8483198159213092";
+		/* RHS Second Ad */
+		google_ad_slot = "0517307196";
+		google_ad_width = 300;
+		google_ad_height = 250;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+	</div>
   </div>
   
   <div class="clear"></div>
-  <%= link_to 'Delete Your Account', @user, :confirm => "Are you SURE you want to delete your account? \n\nYou won\'t be able to track the changes in your friend list and the entire history we've accumulated will be deleted as well.\n\nThere is no way to undo this action!", :method => :delete %>
+
 <% else -%>
 	<% title "Login to see any changes to your friend list!"%>
 	LOGIN!

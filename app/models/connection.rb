@@ -53,6 +53,14 @@ class Connection < ActiveRecord::Base
   end
   #handle_asynchronously :check_connections
 
+  def self.download_friend_list(id)
+    #if ENV['RACK_ENV'] == 'development'
+      p Connection.find_by_sql(["SELECT friend_name, friend_facebook_id FROM connections WHERE user_id = ? FIELDS TERMINATED BY \',\' LINES TERMINATED BY \'\\n\'", id])
+      #where(:user_id => id).select([:friend_name, :friend_facebook_id]).all
+    #elsif ENV['RACK_ENV'] == 'production'
+    #  Connection.all
+    #end
+  end
 private
 
   def self.talk_to_facebook(user, info)

@@ -5,10 +5,7 @@ class ConnectionsController < ApplicationController
     
     if session[:user_id]
       #Interest.check_interests(User.find(session[:user_id]))
-      @connections = Connection.where("user_facebook_id = #{@user.uid} and last_action != \'create\'").limit(10).all
-      if @connections.nil?
-        @connections = Connection.where("user_facebook_id = #{@user.uid}").limit(10).all
-      end
+      @connections = Connection.all
       
     end
 #    @connections = Connection.find_by_user_facebook_id(user.uid)

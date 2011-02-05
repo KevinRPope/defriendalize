@@ -16,11 +16,13 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.email = auth["extra"]["user_hash"]["email"]
       user.name = auth["extra"]["user_hash"]["name"]
-      user.gender = auth["extra"]["user_hash"]["gender"]
-      user.birthdate = auth["extra"]["user_hash"]["birthday"]
+      user.gender = auth["extra"]["user_hash"]["gender"] || "Not Supplied"
+      user.birthdate = auth["extra"]["user_hash"]["birthday"] || "Not Supplied"
       user.access_token = auth["credentials"]["token"]
-      user.relationship_status = auth["extra"]["user_hash"]["relationship_status"]
-      user.location = auth["extra"]["user_hash"]["location"]["name"]
+      user.relationship_status = auth["extra"]["user_hash"]["relationship_status"] || "Not Supplied"
+      #if auth["extra"]["user_hash"]["location"]["name"]
+      #  user.location = auth["extra"]["user_hash"]["location"]["name"] || "Not Supplied"
+      #end
     end
   end
 =begin
@@ -28,7 +30,20 @@ class User < ActiveRecord::Base
     Connection.
   end
 =end
-
+  
+  def self.update_user_info(user, auth)
+      user.email = auth["extra"]["user_hash"]["email"]
+      user.name = auth["extra"]["user_hash"]["name"]
+      user.gender = auth["extra"]["user_hash"]["gender"] || "Not Supplied"
+      user.birthdate = auth["extra"]["user_hash"]["birthday"] || "Not Supplied"
+      user.access_token = auth["credentials"]["token"]
+      user.relationship_status = auth["extra"]["user_hash"]["relationship_status"] || "Not Supplied"
+      #p auth["extra"]["user_hash"]["location"]["name"].nil?
+      #  user.location = auth["extra"]["user_hash"]["location"]["name"] || "Not Supplied"
+      #end
+    user.save
+  end
+  
   def self.get_profile_pic(user)
     request = Net::HTTP.new("graph.facebook.com", 443)
     request.use_ssl = true

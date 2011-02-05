@@ -4,15 +4,13 @@ class SessionController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.find_by_uid(auth["uid"]) 
     if user
-      #Connection.delay.check_connections(user)
-      #Interest.delay.check_interests(user)
+      User.update_user_info(user, auth)
+#      Autoscale.update_user_autoscale(user, auth)
     else
       user = User.create_with_omniauth(auth)
-      #Connection.delay.create_connections(user)
-      #Education.delay.create_education(user, auth)
-      #Interest.delay.create_interests(user)
+      Autoscale.new_user_autoscale(user, auth)
     end
-    #User.delay.get_profile_pic(user) 
+    #
     session[:user_id] = user.id
     redirect_to root_path, :notice => "Signed in!"
   end
@@ -20,6 +18,11 @@ class SessionController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path, :notice => "Signed out!"
+  end
+  
+  def facebook_destroy
+    session[:user_id] = nil
+    redirect_to "http://m.facebook.com/logout.php?confirm=1&next=http://empty-journey-469.heroku.com"
   end
 
   def FAQ

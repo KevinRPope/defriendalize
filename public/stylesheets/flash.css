@@ -29,10 +29,11 @@
 .warning {
   background: url(../images/flash-warning-bg.jpg) repeat-x left -10px;
   color: #a26a1a;
+  border:#a26a1a 1px solid;
 }
 .warning span {
-  margin-top: -6px;
   background: url(../images/flash-warning.png) no-repeat left top;
+  border:none;
 }
 
 .error {

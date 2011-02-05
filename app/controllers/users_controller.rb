@@ -1,16 +1,24 @@
 class UsersController < ApplicationController
-  before_filter :authorize, {:except => [:destroy, :new, :create, :update, :edit]}
+  before_filter :authorize, {:except => [:destroy, :new, :create, :update, :edit, :show, :delete_account]}
   
   # GET /users
   # GET /users.xml
   def index
     @users = User.all
   end
-
+  
+  def delete_account
+    @user = User.find(session[:user_id])
+    respond_to do |format|
+      format.html # delete_account.html.erb
+    end
+  end
+  
   # GET /users/1
   # GET /users/1.xml
   def show
     @user = User.find(session[:user_id])
+    @friend_count = Connection.where(:last_action => [:new, :create]).find_all_by_user_id(session[:user_id]).count
     
     respond_to do |format|
       format.html # show.html.erb
@@ -65,7 +73,7 @@ class UsersController < ApplicationController
       end
     end
   end
-
+    
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
