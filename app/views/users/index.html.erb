@@ -26,6 +26,7 @@
 	<td><%= job.id -%></td>
 	<td><%= job.handler -%></td>
 	<td><%= job.created_at -%></td>
+	<td><%= link_to 'Delete this job', destroy_job_path(job), :confirm => "Are you sure?", :method => :delete -%></td>
   </tr>
   <% end -%>
 </table>

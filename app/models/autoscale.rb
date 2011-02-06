@@ -57,7 +57,7 @@ class Autoscale
     def self.worker_close
       #Do I need to stop worker processing?
       if ENV["RAILS_ENV"] == "production"
-        if @@heroku.info(APP_NAME)[:queue_length].to_i == 0
+        if @@heroku.info(APP_NAME)[:queue_length].to_i == 1
           @@heroku.set_workers(APP_NAME, @workers - 1)
         else
           Autoscale.delay(:run_at => 30.seconds.from_now).worker_close

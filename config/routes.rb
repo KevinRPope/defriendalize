@@ -12,6 +12,7 @@ Defriend::Application.routes.draw do
   match 'privacy_policy' => 'session#privacy_policy', :as => :privacy_policy
   match 'signout' => "session#destroy", :as => :signout
   match 'facebook_signout' => "session#facebook_destroy", :as => :facebook_signout
+  match 'destroy_job/:id' => 'application#destroy_job#id', :as => :destroy_job
   
   resources :users
   resources :connections  
