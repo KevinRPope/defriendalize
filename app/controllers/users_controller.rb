@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.xml
   def index
     @users = User.all
+    @jobs = Delayed_Job.all
   end
   
   def delete_account

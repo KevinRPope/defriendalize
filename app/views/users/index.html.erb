@@ -12,3 +12,19 @@
   </tr>
   <% end -%>
 </table>
+
+<table>
+  <tr>
+    <th>Job ID</th>
+    <th>Handler</th>
+	<th>Date Created</th>
+  </tr>
+  <% @jobs.each do |job| -%>
+  <tr>
+	<td><%= job.id -%></td>
+	<td><%= job.handler -%></td>
+	<td><%= job.created_at -%></td>
+  </tr>
+  <% end -%>
+</table>
+
