@@ -50,6 +50,10 @@ class Autoscale
     
     def self.check_worker_close
       if @@heroku.info(APP_NAME)[:queue_length].to_i < 6
+        p @@heroku.info(APP_NAME)[:queue_length].to_i
+        p @@heroku.info(APP_NAME)[:queue_length].to_i.class
+        p @@heroku.info(APP_NAME)[:queue_length].class
+        p @@heroku.info(APP_NAME)[:queue_length]
         Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
       end
     end

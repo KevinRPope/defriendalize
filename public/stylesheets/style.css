@@ -54,6 +54,13 @@ h2 {
 h1 {
 	padding-left:15px;
 }
+.footer-tag{
+	padding: 10px;
+	color:#eee;
+}
+.footer-tag a { color: #eee; }
+.footer-tag a:visited { color: #eee; }
+.footer-tag a:hover { color: #eee; background-color:#696969; }
 .top-button{  /* top right bottom left */
 	text-align:center;
 	background-color: #fff;
