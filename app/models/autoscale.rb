@@ -31,7 +31,7 @@ class Autoscale
 
     
     def self.check_workers
-      @workers = @@heroku.info(APP_NAME)[:workers]
+      @workers = @@heroku.info(APP_NAME)[:workers].to_i
       
       if @workers == 0
         Autoscale.add_workers(1)
