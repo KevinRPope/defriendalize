@@ -61,7 +61,7 @@ class Autoscale
       if ENV["RAILS_ENV"] == "production"
         if Delayed_Job.all.count.to_i == 1
           p @@heroku.info(APP_NAME)[:workers].to_i
-          @@heroku.set_workers(APP_NAME, @workers - 1)
+          @@heroku.set_workers(APP_NAME, 0)
           p @@heroku.info(APP_NAME)[:workers].to_i
         else
           p Delayed_Job.all.count.to_i
