@@ -49,11 +49,7 @@ class Autoscale
     end
     
     def self.check_worker_close
-      if @@heroku.info(APP_NAME)[:queue_length].to_i < 6
-        p @@heroku.info(APP_NAME)[:queue_length].to_i
-        p @@heroku.info(APP_NAME)[:queue_length].to_i.class
-        p @@heroku.info(APP_NAME)[:queue_length].class
-        p @@heroku.info(APP_NAME)[:queue_length]
+      if Delayed_Job.all.count < 6
         Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
       end
     end
@@ -61,7 +57,7 @@ class Autoscale
     def self.worker_close
       #Do I need to stop worker processing?
       if ENV["RAILS_ENV"] == "production"
-        if @@heroku.info(APP_NAME)[:queue_length].to_i == 1
+        if Delayed_Job.all.count == 1
           @@heroku.set_workers(APP_NAME, @workers - 1)
         else
           Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
