@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users.xml
   def index
     @users = User.all
-    @num_workers = @@heroku.info(APP_NAME)[:workers].to_i
+    @num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
     @jobs = Delayed_Job.all
   end
   
