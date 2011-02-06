@@ -57,6 +57,8 @@ class Autoscale
     def self.worker_close
       #Do I need to stop worker processing?
       if ENV["RAILS_ENV"] == "production"
+        p Delayed_Job.all.count
+        p @workers
         if Delayed_Job.all.count == 1
           @@heroku.set_workers(APP_NAME, @workers - 1)
         else
