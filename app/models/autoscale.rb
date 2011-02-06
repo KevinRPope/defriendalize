@@ -43,18 +43,22 @@ class Autoscale
     end
     
     def self.add_workers(number)
-      #@@heroku.set_workers(APP_NAME, @workers + number)
+      if ENV["RAILS_ENV"] == "production"
+        @@heroku.set_workers(APP_NAME, @workers + number)
+      end
     end
     
     def self.check_worker_close
-      if @@heroku.info(APP_NAME)[:queue_length] < 3
+      if @@heroku.info(APP_NAME)[:queue_length].to_i < 3
         Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
       end
     end
     
     def self.worker_close
       #Do I need to stop worker processing?
-      #@@heroku.set_workers(APP_NAME, @workers - 1)
+      if ENV["RAILS_ENV"] == "production"
+        @@heroku.set_workers(APP_NAME, @workers - 1)
+      end
       p "workers during delayed_close method: " + @workers.to_s
     end
     

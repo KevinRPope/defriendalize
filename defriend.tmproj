@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/models/connection.rb</string>
+	<string>app/views/layouts/application.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -26,9 +26,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>52</integer>
+				<integer>127</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -40,9 +40,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>38</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>27</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -54,28 +54,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>35</integer>
+				<integer>42</integer>
 				<key>line</key>
-				<integer>33</integer>
+				<integer>6</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>6</integer>
-		</dict>
-		<key>app/models/connection.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>83</integer>
-				<key>line</key>
-				<integer>57</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
 			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>47</integer>
 		</dict>
 		<key>app/models/interest.rb</key>
 		<dict>
@@ -96,79 +82,81 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>39</integer>
+				<integer>40</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>3</integer>
+			<integer>10</integer>
 		</dict>
 		<key>app/views/defriend/index.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>34</integer>
 				<key>line</key>
-				<integer>36</integer>
+				<integer>1</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>3</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>1</integer>
+			</dict>
 		</dict>
 		<key>app/views/layouts/application.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>config/application.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>43</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
-		</dict>
-		<key>config/initializers/heroku.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>public/stylesheets/style.css</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
 				<integer>8</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/session/privacy_policy.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>config/routes.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>76</integer>
+				<key>line</key>
+				<integer>11</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -178,17 +166,14 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/controllers/session_controller.rb</string>
 		<string>app/controllers/defriend_controller.rb</string>
-		<string>app/models/connection.rb</string>
 		<string>app/views/layouts/application.html.erb</string>
+		<string>config/routes.rb</string>
+		<string>app/controllers/session_controller.rb</string>
+		<string>app/views/session/privacy_policy.html.erb</string>
 		<string>app/views/defriend/index.html.erb</string>
-		<string>public/stylesheets/style.css</string>
 		<string>app/models/autoscale.rb</string>
-		<string>config/initializers/heroku.rb</string>
-		<string>config/application.rb</string>
 		<string>app/models/user.rb</string>
-		<string>app/models/interest.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

@@ -9,6 +9,7 @@ Defriend::Application.routes.draw do
   match 'auth/facebook/callback' => "session#create"
   match 'auth/failure' => 'session#FAQ'  #change this to a page asking why they said no.
   match 'FAQ' => 'session#FAQ', :as => :faq
+  match 'privacy_policy' => 'session#privacy_policy', :as => :privacy_policy
   match 'signout' => "session#destroy", :as => :signout
   match 'facebook_signout' => "session#facebook_destroy", :as => :facebook_signout
   

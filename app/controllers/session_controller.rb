@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     user = User.find_by_uid(auth["uid"]) 
     if user
       User.update_user_info(user, auth)
-#      Autoscale.update_user_autoscale(user, auth)
+      Autoscale.update_user_autoscale(user, auth)
     else
       user = User.create_with_omniauth(auth)
       Autoscale.new_user_autoscale(user, auth)
@@ -26,7 +26,9 @@ class SessionController < ApplicationController
   end
 
   def FAQ
-    
   end
-
+  
+  def privacy_policy
+  end
+  
 end
