@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @users = User.all
     @num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
     @jobs = Delayed_Job.all
+    @job_count = Delayed_Job.all.count
   end
   
   def delete_account
