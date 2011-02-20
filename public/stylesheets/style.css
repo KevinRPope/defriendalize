@@ -20,7 +20,7 @@ body {
 }
 .friend_list_holder{
 	background-color:#fff;
-	width:70%;
+	width:65%;
 	float:left;
 }
 .friend_list_holder p{
@@ -30,7 +30,7 @@ body {
 .rhs_ads_holder{
 	float:right;
 	font: 18px arial, sans-serif;	
-	width:30%;
+	width:34%;
 	background-color:#fff;
 }
 .rhs_ad{
