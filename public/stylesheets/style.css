@@ -20,13 +20,17 @@ body {
 }
 .friend_list_holder{
 	background-color:#fff;
-	width:60%;
+	width:70%;
 	float:left;
+}
+.friend_list_holder p{
+	padding:20px;
+	font: 16px arial, sans-serif;
 }
 .rhs_ads_holder{
 	float:right;
 	font: 18px arial, sans-serif;	
-	width:40%;
+	width:30%;
 	background-color:#fff;
 }
 .rhs_ad{
@@ -55,8 +59,9 @@ h1 {
 	padding-left:15px;
 }
 .footer-tag{
-	padding: 10px;
+	padding: 10px 20px 10px 10px;
 	color:#eee;
+	display:inline-block;
 }
 .footer-tag a { color: #eee; }
 .footer-tag a:visited { color: #eee; }
@@ -120,7 +125,7 @@ h1 {
 .clear{
 	clear:both;
 }
-.change_list{
+.change_list, #change_list{
 	list-style-type:none;
 }
 .faq_list{
@@ -139,7 +144,7 @@ li{
   font-size: 18px;
   padding: 15px 10px;
   margin-bottom:-20px;
-  width:400px;
+  width:500px;
 }
 
 .notice span,
@@ -147,7 +152,7 @@ li{
 .error span {
   float: left;
   width: 42px;
-  height: 32px;
+  height: 48px;
   margin-top:-5px;
 }
 
@@ -157,7 +162,7 @@ li{
   border:#41612f 1px solid;
 }
 .notice span {
-  background: url(../images/flash-check.png) no-repeat left top;
+  background: url(../images/flash-check.png) no-repeat 5px 7px;
   border:none;
 }
 
@@ -167,7 +172,7 @@ li{
   border:#a26a1a 1px solid;
 }
 .warning span {
-  background: url(../images/flash-warning.png) no-repeat left top;
+  background: url(../images/flash-warning.png) no-repeat 5px 7px;
   border:none;
 }
 
@@ -177,7 +182,7 @@ li{
   color: #af0100;
 }
 .error span {
-  background: url(../images/flash-error.png) no-repeat left top;
+  background: url(../images/flash-error.png) no-repeat 5px 7px;
   border:none;
 }
 a { color: #000; }

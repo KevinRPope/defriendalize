@@ -1,0 +1,18 @@
+<html>
+<body>
+	<p>
+		Hey there <%= @user.name -%>,
+	</p>
+	
+	<p>
+		Thanks for signing up for Defriendalize.com!  We'll keep track of your list of friends so you know who has defriended you and who has cancelled their Facebook account altogether.
+	</p>
+	
+	<%= render :partial => 'footer', :locals => {:user => @user} -%>
+	
+	<p>
+		Thanks,<br />
+		The Defriendalize Team
+	</p>
+</body>
+</html>

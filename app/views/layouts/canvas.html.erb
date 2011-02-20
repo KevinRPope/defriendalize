@@ -11,15 +11,15 @@
 <body>
 	<div class="main-holder">
 		<div class="top-button">
-			<%= link_to 'Home', root_path -%>
+			<%= link_to 'Home', canvas_index_path -%>
 		</div>
 		<div class="top-button">
-			<%= link_to 'FAQ', faq_path -%>
+			<%= link_to 'FAQ', canvas_faq_path -%>
 		</div>
 		
 		<% if session[:user_id] %>
 			<div class="top-button">
-				<%= link_to 'My Profile', '/users/profile' -%>
+				<%= link_to 'My Profile', canvas_profile_path -%>
 			</div>
 		<% end %>
 		
@@ -35,13 +35,13 @@
 		</div>
 	  
 		<div class="footer-tag">
-			<%= link_to 'Privacy Policy', privacy_policy_path -%>
+			<%= link_to 'Privacy Policy', canvas_privacy_path -%>
 		</div>
 		<div class="footer-tag">
-			<%= link_to 'About Us', about_us_path -%>
+			<%= link_to 'About Us', canvas_about_us_path -%>
 		</div>
 		<div class="footer-tag">
-			<%= link_to 'Contact Us', contact_us_path -%>
+			<%= link_to 'Contact Us', canvas_contact_us_path -%>
 		</div>
 	</div>
 </body>

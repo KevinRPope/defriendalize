@@ -17,6 +17,22 @@ class UsersController < ApplicationController
     end
   end
   
+  def unsubscribe
+    User.unsubscribe(params[:uid])
+    flash[:notice] = 'You have been unsubscribed from all emails'
+    if session[:user_id]
+      redirect_to user_path :id => session[:user_id] 
+    else
+      redirect_to root_path
+    end
+  end
+  
+  def resubscribe
+    User.resubscribe(session[:user_id])
+    flash[:notice] = 'You have been resubscribed to all emails'
+    redirect_to user_path
+  end
+  
   # GET /users/1
   # GET /users/1.xml
   def show
@@ -81,6 +97,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(session[:user_id])
+    Notifier.deleted_account(@user).deliver
     session[:user_id] = nil
     @user.destroy
 

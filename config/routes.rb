@@ -1,21 +1,32 @@
 Defriend::Application.routes.draw do
   get "defriend/index"
-  get "search/index", :as => :search_index
   get "session/create"
   get "session/destroy"
 
-  match "users/profile" => "users#show"  
+  match 'users/profile' => 'users#show'
+  match 'users/unsubscribe/:uid' => 'users#unsubscribe#uid', :as => :unsubscribe
+  match 'users/resubscribe/:id' => 'users#resubscribe#id', :as => :resubscribe
   match 'users/delete_account' => 'users#delete_account', :as => :delete_account
   match 'auth/facebook/callback' => "session#create"
   match 'auth/failure' => 'session#FAQ'  #change this to a page asking why they said no.
   match 'FAQ' => 'session#FAQ', :as => :faq
+  match 'contact_us' => 'session#contact_us', :as => :contact_us
+  match 'about_us' => 'session#about_us', :as => :about_us
   match 'privacy_policy' => 'session#privacy_policy', :as => :privacy_policy
   match 'signout' => "session#destroy", :as => :signout
   match 'facebook_signout' => "session#facebook_destroy", :as => :facebook_signout
   match 'destroy_job/:id' => 'application#destroy_job#id', :as => :destroy_job
+
+  match 'canvas/faq' => 'canvas#faq', :as => :canvas_faq
+  match 'canvas/contact_us' => 'canvas#contact_us', :as => :canvas_contact_us
+  match 'canvas/about_us' => 'canvas#about_us', :as => :canvas_about_us
+  match 'canvas/privacy' => 'canvas#privacy', :as => :canvas_privacy
+  match 'canvas/profile' => 'canvas#profile', :as => :canvas_profile
+  match 'canvas' => 'canvas#index', :as => :canvas_index
   
   resources :users
   resources :connections  
+  resources :canvas
   
   root :to => "defriend#index"
   

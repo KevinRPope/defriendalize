@@ -16,6 +16,10 @@ class ConnectionsController < ApplicationController
     end
   end
 
+  def update_connections
+    Connection.update_connections(session[:user_id])
+  end
+
   # GET /connections/1
   # GET /connections/1.xml
   def show

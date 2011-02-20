@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110121231151) do
+ActiveRecord::Schema.define(:version => 20110217100415) do
 
   create_table "connections", :force => true do |t|
     t.string   "user_facebook_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20110121231151) do
     t.datetime "updated_at"
     t.string   "location"
     t.string   "relationship_status"
+    t.boolean  "email_me",            :default => true
   end
 
 end

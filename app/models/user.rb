@@ -54,4 +54,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.unsubscribe(uid)
+    @user = User.find_by_uid(uid)
+    @user.email_me = false
+    @user.save
+  end
+  
+  def self.resubscribe(id)
+    @user = User.find(id)
+    @user.email_me = true
+    @user.save
+  end
+
 end

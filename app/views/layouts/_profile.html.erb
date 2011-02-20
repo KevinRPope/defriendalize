@@ -1,0 +1,49 @@
+<% title "Your Profile Information"%>
+<p id="notice"><%= notice %></p>
+<div class="friend_list_holder">
+<h1><%= yield :title -%></h1>
+<ul class="change_list">
+	<% unless @user.profile_picture.nil? -%>
+	<li class="profile_info">
+		<%= image_tag(@user.profile_picture)%>
+	</li>
+	<% end -%>
+	<% unless @user.name.nil? -%>
+	<li class="profile_info">
+		Name: <%= @user.name -%>
+	</li>
+	<% end -%>
+	<% unless @user.gender.nil? -%>
+	<li class="profile_info">
+		Gender: <%= @user.gender.capitalize -%>
+	</li>
+	<% end -%>
+	<% unless @user.location.nil? -%>
+	<li class="profile_info">
+		Location: <%= @user.location.capitalize -%>
+	</li>
+	<% end -%>
+	<% unless @user.relationship_status.nil? -%>
+	<li class="profile_info">
+		Relationship Status: <%= @user.relationship_status.capitalize -%>
+	</li>
+	<% end -%>
+	<% unless @user.email.nil? -%>
+	<li class="profile_info">
+		Email Address: <%= @user.email -%>
+	</li>
+	<% end -%>
+	<% unless @user.birthdate.nil? -%>
+	<li class="profile_info">
+		Birthdate: <%= @user.birthdate -%>
+	</li>
+	<% end -%>
+	<li class="profile_info">
+		Friends: <%= @friend_count -%>
+	</li>
+	<li class="profile_info">
+		Subscribed to weekly friend list email: <%= @user.email_me -%> (<%= @user.email_me ? (link_to('Unsubscribe', :controller => :users, :action => :unsubscribe, :uid => @user.uid)) : (link_to('Resubscribe', :controller => :users, :action => :resubscribe, :id => @user.id)) -%>)
+	</li>
+	  <%= link_to 'Delete Your Account', delete_account_path -%>
+</ul>
+</div>

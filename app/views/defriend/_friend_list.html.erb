@@ -1,6 +1,6 @@
 <% title "Your friend change list" -%>
 <h1><%=yield :title -%></h1>
-<ul class="change_list">
+<ul id="change_list">
 <% if connections.empty? -%>
 	<li class="profile_info">No changes in your list of friends.  Yet.</li>
 <% else%>
@@ -10,17 +10,17 @@
 	<% connections.each do |connection| %>
 
 	<li>
-	  <% if connection.last_action == 'defriend'%>
+	  <% if connection.last_action == 'Defriended'%>
 		<div class="error">
 		<span class="error"></span>
-	  <% elsif connection.last_action == 'cancelled' -%>
+	  <% elsif connection.last_action == 'Canceled Account or Changed Privacy Settings'-%>
 		<div class="warning">
 		<span class="warning"></span>
 	  <% else %>
 		<div class="notice">
 		<span class="notice"></span>
 	  <% end %>
-	  		<%= connection.friend_name %>:
+	  		<%= connection.friend_name %>:<br />
 			<%= connection.last_action.capitalize %>
 		</div>
 		<div class="clear"></div>
@@ -29,3 +29,4 @@
 	  <% end -%>
 	</ul>
 <% end -%>
+

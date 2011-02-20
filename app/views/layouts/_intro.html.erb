@@ -1,0 +1,65 @@
+<% if session[:user_id] -%>
+  <div class="friend_list_holder">
+	<%= render :partial => "/defriend/friend_list", :locals => { :connections => @connections} -%>
+  </div>
+
+<% else -%>
+	<% title "Welcome to Defriendalize - Login to track any changes to your friend list!"%>
+	<h1>Welcome to Defriendalize</h1>
+	<div class="friend_list_holder">
+		<p>
+			Defriendalize is a project built to track changes to your friend list.  Have you ever wondered why your number of friends has decreased?  Do you want to know the culprit?  With Defriendalize, you can do just that.  Simply <%= link_to 'Sign in with Facebook', '/auth/facebook' -%> and we'll start tracking your list of friends, and we'll send you periodic updates to let you know what's happening.  
+		</p>
+		
+		<ul class='change_list'>
+			<li class="profile_info">
+				Your friend list activity for the last 30 days:
+			</li>
+			<li>
+				<div class="notice">
+				<span class="notice"></span>
+					Johnny Chimpo:<br />
+					Reactivated Account
+				</div>
+				<div class="clear"></div>
+			</li>
+			<li>
+				<div class="error">
+				<span class="error"></span>
+					Sparky McTalksalot:<br />
+					Defriended
+				</div>
+				<div class="clear"></div>
+			</li>
+			<li>
+				<div class="notice">
+				<span class="notice"></span>
+					Cosmo Kramer:<br />
+					New Connection
+				</div>
+				<div class="clear"></div>
+			</li>
+			<li>
+				<div class="warning">
+				<span class="warning"></span>
+					Nicholas Angle:<br />
+					Canceled Account or Changed Privacy Settings
+				</div>
+				<div class="clear"></div>
+			</li>
+			
+			<li>
+				<div class="notice">
+				<span class="notice"></span>
+					Louis Winthorpe III:<br />
+					Refriended
+				</div>
+				<div class="clear"></div>
+			</li>
+		</ul>
+
+		<p>
+			Keep in mind that we can't tell you who has already defriended you - there isn't a way for anyone to tell you that other than Facebook.  We can only start tracking your friend list and keep you updated and informed from the time you sign up.
+		</p>
+	</div>
+<% end %>

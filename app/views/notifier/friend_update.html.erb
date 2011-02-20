@@ -1,0 +1,31 @@
+<html>
+<body>
+	<p>
+		Hey there <%= @user.name -%>,
+	</p>
+	
+	<p>
+		Here is your weekly friend list update!
+	</p>
+	
+	<p>
+		You had:<br /> 
+		<%= pluralize(@new_friend, 'new friend') -%>.<br />
+		<%= pluralize(@canceled, 'friend') -%> cancel their accounts or change their privacy settings.<br />
+		<%= pluralize(@refriend, 'friend') -%> re-friend you after de-friending you.<br />
+    	<%= pluralize(@reactivated, 'friend') -%> friends re-activate their account.<br />
+		<%= pluralize(@defriend, 'friend') -%> friends de-friend you or you de-friended them.<br />
+	</p>
+	
+	<p>
+		If you'd like, you can take a look at your <%= link_to 'updated friend list' root_url -%>.
+	</p>
+	
+	<%= render :partial => 'footer', :locals => {:user => @user} -%>
+	
+	<p>
+		Thanks,<br />
+		The Defriendalize Team
+	</p>
+</body>
+</html>

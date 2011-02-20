@@ -11,21 +11,22 @@ class Autoscale
       Education.delay.create_education(user, auth)
       Interest.delay.create_interests(user)
       User.delay.get_profile_pic(user)
-      
+      Notifier.delay.welcome(user)
       Autoscale.check_worker_close
+      Connection.delay(:run_at => 7.days.from_now).check_connections(user, true)
+
     end
     
     def self.update_user_autoscale(user, auth)
-                                                                            p "workers before check_workers method: " + @workers.to_s
       Autoscale.check_workers
-                                                                            p "workers after check_workers method: " + @workers.to_s
+
       Connection.delay.check_connections(user)
       Interest.delay.check_interests(user)
       User.delay.update_user_info(user, auth)
       User.delay.get_profile_pic(user)
-                                                                            p "workers before delayed_close method: " + @workers.to_s 
       Autoscale.check_worker_close
-                                                                            p "workers after delayed_close method: " + @workers.to_s
+      Connection.delay(:run_at => 7.days.from_now).check_connections(user, true)
+      
     end
     
 
@@ -51,7 +52,7 @@ class Autoscale
     end
     
     def self.check_worker_close
-      if Delayed_Job.all.count < 6
+      if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date).all.count < 7
         Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
       end
     end
@@ -59,7 +60,7 @@ class Autoscale
     def self.worker_close
       #Do I need to stop worker processing?
       if ENV["RAILS_ENV"] == "production"
-        if Delayed_Job.all.count.to_i == 1
+        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date).all.count.to_i == 1
           p @@heroku.info(APP_NAME)[:workers].to_i
           @@heroku.set_workers(APP_NAME, 0)
           p @@heroku.info(APP_NAME)[:workers].to_i
@@ -68,13 +69,12 @@ class Autoscale
           Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
         end
       else
-        if Delayed_Job.all.count.to_i == 1
+        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date).all.count.to_i == 1
           p @workers = 0
         else
           p Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
         end
       end
-      p "workers during delayed_close method: " + @workers.to_s
     end
     
     def self.delete_worker_close
