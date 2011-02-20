@@ -25,7 +25,6 @@ class Autoscale
       User.delay.update_user_info(user, auth)
       User.delay.get_profile_pic(user)
       Autoscale.check_worker_close
-      Connection.delay(:run_at => 7.days.from_now).check_connections(user, true)
       
     end
     
