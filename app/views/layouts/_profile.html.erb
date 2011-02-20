@@ -33,6 +33,11 @@
 		Email Address: <%= @user.email -%>
 	</li>
 	<% end -%>
+	<% unless @user.birthdate.nil? -%>
+	<li class="profile_info">
+		Birthdate: <%= @user.birthdate -%>
+	</li>
+	<% end -%>
 	<li class="profile_info">
 		Friends: <%= @friend_count -%>
 	</li>

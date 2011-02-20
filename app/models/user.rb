@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
       user.birthdate = auth["extra"]["user_hash"]["birthday"] || "Not Supplied"
       user.access_token = auth["credentials"]["token"]
       user.relationship_status = auth["extra"]["user_hash"]["relationship_status"] || "Not Supplied"
+      user.email_me = true
       if auth["extra"]["user_hash"]["location"]
         user.location = auth["extra"]["user_hash"]["location"]["name"] || "Not Supplied"
       end
@@ -40,6 +41,9 @@ class User < ActiveRecord::Base
       user.relationship_status = auth["extra"]["user_hash"]["relationship_status"] || "Not Supplied"
       if auth["extra"]["user_hash"]["location"]
         user.location = auth["extra"]["user_hash"]["location"]["name"] || "Not Supplied"
+      end
+      if user.email_me.nil?
+        user.email_me = true
       end
     user.save
   end
