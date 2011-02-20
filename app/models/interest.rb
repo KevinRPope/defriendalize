@@ -10,7 +10,8 @@ has_one :user
         :category => d["category"],
         :name => d["name"],
         :category_facebook_id => d["id"],
-        :current => true)
+        :current => true,
+        :user_id => user.id)
     end
     Interest.import interests, :validate => false
   end
@@ -36,7 +37,8 @@ has_one :user
         :category_facebook_id => like,
         :name => new_likes_data["data"].select{|hash| hash["id"] == like.to_s}[0]["name"],
         :category => new_likes_data["data"].select{|hash| hash["id"] == like.to_s}[0]["category"],
-        :current => true)
+        :current => true,
+        :user_id => user.id)
       i.save
     end
     
