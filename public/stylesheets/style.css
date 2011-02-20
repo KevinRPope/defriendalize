@@ -39,6 +39,11 @@ body {
 	text-align:right;
 	margin-right:30px;
 }
+.change_sub{
+	font:10px arial, sans-serif;
+	padding-left:10px;
+	display:inline;
+}
 .rhs_ad{
 	margin-right:auto;
 	margin-left:auto;

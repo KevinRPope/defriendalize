@@ -42,7 +42,12 @@
 		Friends: <%= @friend_count -%>
 	</li>
 	<li class="profile_info">
-		Subscribed to weekly friend list email: <%= @user.email_me -%> (<%= @user.email_me ? (link_to('Unsubscribe', :controller => :users, :action => :unsubscribe, :uid => @user.uid)) : (link_to('Resubscribe', :controller => :users, :action => :resubscribe, :id => @user.id)) -%>)
+		Email subscription status: 
+		<% if @user.email_me -%> 
+			Subscribed <div class="change_sub">(<%= link_to('Unsubscribe', :controller => :users, :action => :unsubscribe, :uid => @user.uid) -%>)</div>
+		<% else -%> 
+			Unsubscribed <div class="change_sub">(<%= link_to('Resubscribe', :controller => :users, :action => :resubscribe, :id => @user.id) -%>)</div>
+		<% end -%>
 	</li>
 	  <%= link_to 'Delete Your Account', delete_account_path -%>
 </ul>
