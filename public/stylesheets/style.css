@@ -33,6 +33,12 @@ body {
 	width:34%;
 	background-color:#fff;
 }
+.difference{
+	display:block;
+	font: 10px arial, sans-serif;
+	text-align:right;
+	margin-right:30px;
+}
 .rhs_ad{
 	margin-right:auto;
 	margin-left:auto;

@@ -1,9 +1,10 @@
 <% if session[:user_id] -%>
 
 	<div class="sign-in-area">
-		Signed in as <%= user.name -%>.  <%= link_to 'Sign out', signout_path -%> or <%= link_to image_tag('/images/logout_small.gif'), facebook_signout_path -%><!--><a href="http://m.facebook.com/logout.php?confirm=1&next=http://empty-journey-469.heroku.com"><img id="fb_logout_image" src="/public/logout_small.gif" alt="Logout"/></a><-->
+		Signed in as <%= user.name -%>.  <%= link_to 'Sign out', signout_path -%> or <%= link_to image_tag('/images/logout_small.gif', :alt => "Log out of Facebook"), facebook_signout_path -%><br />
+		<span class="difference"><%= link_to 'What\'s the difference?', '/FAQ#logout_buttons' -%></span>
 <% else -%>
 <div class="sign-in-area">
-	<%= link_to 'Sign in with Facebook', '/auth/facebook'-%>
+	<%= link_to image_tag('/images/fb-login-button.png', :alt => 'Sign in with Facebook'),'/auth/facebook', :alt => 'Sign in with Facebook' -%>
 <% end -%>
 </div>

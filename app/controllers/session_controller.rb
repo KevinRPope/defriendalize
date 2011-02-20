@@ -1,7 +1,6 @@
 class SessionController < ApplicationController
   def create
     #raise request.env["omniauth.auth"].to_yaml
-    p request.env["HTTP_REFERER"]
     auth = request.env["omniauth.auth"]
     user = User.find_by_uid(auth["uid"]) 
     if user
