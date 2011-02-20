@@ -1,4 +1,6 @@
 class ConnectionsController < ApplicationController
+  before_filter :authorize, {:include => [:index]}
+  
   # GET /connections
   # GET /connections.xml
   def index

@@ -25,7 +25,7 @@ class SessionController < ApplicationController
   def facebook_destroy
     session[:user_id] = nil
     session[:expire] = 1.day.ago
-    redirect_to "http://m.facebook.com/logout.php?confirm=1&next=http://empty-journey-469.heroku.com"
+    redirect_to "http://m.facebook.com/logout.php?confirm=1&next=http://www.defriendalize.com"
   end
 
   def FAQ

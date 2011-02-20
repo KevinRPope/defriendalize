@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorize, {:except => [:destroy, :new, :create, :update, :edit, :show, :delete_account]}
+  before_filter :authorize, {:except => [:destroy, :new, :create, :update, :edit, :show, :delete_account, :unsubscribe, :resubscribe]}
   
   # GET /users
   # GET /users.xml
