@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(session[:user_id])
+    p @user
     @friend_count = Connection.where(:last_action => [:new, :create]).find_all_by_user_id(session[:user_id]).count
     
     respond_to do |format|
