@@ -4,7 +4,7 @@ ActionMailer::Base.smtp_settings = {
   :port => 587,
   :domain => 'gmail.com',
   :authentication => 'plain',
-  :user_name => 'Defriendalize <no-reply@defriendalize.com>',
+  :user_name => 'no-reply@defriendalize.com',
   :password => 's25BTQ37z'
 }
 #if ENV["RAILS_ENV"] == 'development'

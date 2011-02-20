@@ -41,18 +41,15 @@ class Connection < ActiveRecord::Base
       update_connection = Connection.find_by_user_facebook_id_and_friend_facebook_id(user.uid, friend)
       if update_connection
         if update_connection.last_action == 'Defriended'
-          p 'Refriended'
           update_connection.last_action = 'Refriended'
           update_connection.save
           refriend = refriend + 1
         elsif update_connection.last_action == 'Canceled Account or Changed Privacy Settings'
-          p 'Reactivated'
           update_connection.last_action = 'Reactived Account'
           update_connection.save   
           reactivate = reactivate + 1   
         end
       else
-        p 'New'
         c = Connection.new(
           :user_facebook_id => user.uid,
           :friend_facebook_id => friend,

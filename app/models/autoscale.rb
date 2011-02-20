@@ -13,7 +13,7 @@ class Autoscale
       User.delay.get_profile_pic(user)
       Notifier.delay.welcome(user)
       Autoscale.check_worker_close
-      Connection.delay(:run_at => 7.days.from_now).check_connections(user, true)
+      #Connection.delay(:run_at => 7.days.from_now).check_connections(user, true)
 
     end
     
@@ -59,16 +59,13 @@ class Autoscale
     def self.worker_close
       #Do I need to stop worker processing?
       if ENV["RAILS_ENV"] == "production"
-        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date).all.count.to_i == 1
-          p @@heroku.info(APP_NAME)[:workers].to_i
+        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i == 1
           @@heroku.set_workers(APP_NAME, 0)
-          p @@heroku.info(APP_NAME)[:workers].to_i
         else
-          p Delayed_Job.all.count.to_i
           Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
         end
       else
-        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date).all.count.to_i == 1
+        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i == 1
           p @workers = 0
         else
           p Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
