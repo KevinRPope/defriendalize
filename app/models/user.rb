@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :educations, :dependent => :destroy
   
   #  after_save {|record| p record.friend_name.to_s + " was saved successfully to the Connections table" }
-  before_destroy :remove_other_entries
+  #before_destroy :remove_other_entries
   
   def remove_other_entries
       Connection.delete_all("user_facebook_id = #{self.uid}")
