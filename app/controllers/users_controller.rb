@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     p @user
-    @friend_count = Connection.where(:last_action => [:new, :create]).find_all_by_user_id(session[:user_id]).count
+    @friend_count = Connection.where(:last_action => ['New Connection', 'Created Connection', 'create', 'Refriended']).find_all_by_user_id(session[:user_id]).count
     
     respond_to do |format|
       format.html # show.html.erb

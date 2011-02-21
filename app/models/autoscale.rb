@@ -8,8 +8,8 @@ class Autoscale
       Autoscale.check_workers
       
       Connection.delay.create_connections(user)
-      Education.delay.create_education(user, auth)
-      Interest.delay.create_interests(user)
+      #Education.delay.create_education(user, auth)
+      #Interest.delay.create_interests(user)
       User.delay.get_profile_pic(user)
       Notifier.delay.welcome(user)
       Autoscale.check_worker_close
@@ -21,8 +21,8 @@ class Autoscale
       Autoscale.check_workers
 
       Connection.delay.check_connections(user)
-      Interest.delay.check_interests(user)
-      User.delay.update_user_info(user, auth)
+      #Interest.delay.check_interests(user)
+      #User.delay.update_user_info(user, auth)
       User.delay.get_profile_pic(user)
       Autoscale.check_worker_close
       
@@ -65,7 +65,8 @@ class Autoscale
           Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
         end
       else
-        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i == 1
+        p Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i
+        if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i <= 1
           p @workers = 0
         else
           p Autoscale.delay(:run_at => 30.seconds.from_now).worker_close

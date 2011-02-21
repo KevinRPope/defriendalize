@@ -81,14 +81,6 @@ class Connection < ActiveRecord::Base
   end
   #handle_asynchronously :check_connections
 
-  def self.download_friend_list(id)
-    #if ENV['RACK_ENV'] == 'development'
-      p Connection.find_by_sql(["SELECT friend_name, friend_facebook_id FROM connections WHERE user_id = ? FIELDS TERMINATED BY \',\' LINES TERMINATED BY \'\\n\'", id])
-      #where(:user_id => id).select([:friend_name, :friend_facebook_id]).all
-    #elsif ENV['RACK_ENV'] == 'production'
-    #  Connection.all
-    #end
-  end
 private
 
   def self.talk_to_facebook(user, info)
@@ -97,15 +89,6 @@ private
     friend_data_wrapper = friend_request.get("/#{user.uid}/#{info}?access_token=#{user.access_token}")
     friend_data = ActiveSupport::JSON.decode(friend_data_wrapper.body)
   end  
-  
-  def self.fql_friend_check(user, friend)
-    friend_request = Net::HTTP.new("api.facebook.com", 443)
-    friend_request.use_ssl = true
-    #friend_data_wrapper = friend_request.get("/?access_token=#{user.access_token}&preload_fql=json_encode&query=SELECT%20uid2%20FROM%20friend%20WHERE%20uid1%20=%me()%20AND%20uid2%20=%#{friend.id}")
-    p friend_data_wrapper = friend_request.get("/?access_token=112974412105568|6614cc8dfa750b6c83d127cf-1183536968|8ZKXF5Q81MzOo3hLplAh4OPuLTQ&preload_fql=json_encode&query=SELECT%20uid2%20FROM%20friend%20WHERE%20uid1%20=me()%20AND%20uid2%20=#{friend}")
-    p friend_data_wrapper.body
-    p friend_data = ActiveSupport::JSON.decode(friend_data_wrapper.body)    
-  end
   
   def self.account_exists(uid)
     friend_request = Net::HTTP.new("graph.facebook.com", 443)
