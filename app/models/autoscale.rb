@@ -4,6 +4,7 @@ require 'delayed_job'
 class Autoscale
   #class << self
   APP_NAME = 'empty-journey-469'
+  @@workers
     def self.new_user_autoscale(user, auth)
       Autoscale.check_workers
       
@@ -31,22 +32,43 @@ class Autoscale
 
     
     def self.check_workers
-      @workers = @@heroku.info(APP_NAME)[:workers].to_i
-      
-      if @workers == 0
-        Autoscale.add_workers(1)
-        #Do I need to enter a line here about starting the worker processing jobs?
+      p "check_workers"
+      if ENV["RAILS_ENV"] == "production"
+        @workers = @@heroku.info(APP_NAME)[:workers].to_i
+        p "production"
+        if @workers == 0
+          Autoscale.add_workers(1)
+          p "adding workers"
+          #Do I need to enter a line here about starting the worker processing jobs?
+        else
+          Autoscale.delete_worker_close
+          p "delete workers"
+          #logic to check if the queue is too long and more workers are needed
+        end  
       else
-        Autoscale.delete_worker_close
-        #logic to check if the queue is too long and more workers are needed
-      end  
+        if @@workers.nil?
+          @@workers = 0
+          p "workers was nil"
+        else
+          p "workers was not nil"
+        end
+        if @@workers == 0
+          Autoscale.add_workers(1)
+          p "adding workers" + @@workers
+          #Do I need to enter a line here about starting the worker processing jobs?
+        else
+          Autoscale.delete_worker_close
+          p "delete workers"
+          #logic to check if the queue is too long and more workers are needed
+        end  
+      end
     end
     
     def self.add_workers(number)
       if ENV["RAILS_ENV"] == "production"
         @@heroku.set_workers(APP_NAME, @workers + number)
       else
-        @workers = 1
+        @@workers = 1
       end
     end
     
@@ -65,9 +87,8 @@ class Autoscale
           Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
         end
       else
-        p Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i
         if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i <= 1
-          p @workers = 0
+          p @@workers = 0
         else
           p Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
         end
@@ -79,6 +100,7 @@ class Autoscale
       close_instructions.each do |e|
         e.destroy 
       end
+      p "delete_worker_close: " + close_instructions.inspect
     end
 
 end
