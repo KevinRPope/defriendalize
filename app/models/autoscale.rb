@@ -42,7 +42,7 @@ class Autoscale
           #Do I need to enter a line here about starting the worker processing jobs?
         else
           Autoscale.delete_worker_close
-          p "delete workers"
+          p "delete workers: " + Time.now.to_s
           #logic to check if the queue is too long and more workers are needed
         end  
       else
@@ -50,15 +50,15 @@ class Autoscale
           @@workers = 0
           p "workers was nil"
         else
-          p "workers was not nil"
+          p "workers was not nil: " + @@workers.to_s + " " + Time.now.to_s
         end
         if @@workers == 0
           Autoscale.add_workers(1)
-          p "adding workers" + @@workers
+          p "adding workers: " + @@workers.to_s + " " + Time.now.to_s
           #Do I need to enter a line here about starting the worker processing jobs?
         else
           Autoscale.delete_worker_close
-          p "delete workers"
+          p "delete workers: " + Time.now.to_s
           #logic to check if the queue is too long and more workers are needed
         end  
       end
@@ -99,11 +99,11 @@ class Autoscale
     
     def self.delete_worker_close
       close_instructions = Delayed_Job.all(:conditions => ["handler LIKE ?","%method_name: :worker_close%"])
-      p "delete_worker_close: " + close_instructions.inspect
+      p "delete_worker_close: " + close_instructions.inspect + " " + Time.now.to_s
       close_instructions.each do |e|
         p e.destroy 
       end
-      p "delete_worker_close: " + close_instructions.inspect
+      p "delete_worker_close: " + close_instructions.inspect + " " + Time.now.to_s
     end
 
 end

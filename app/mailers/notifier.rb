@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default :from => "no-reply@defriendalize.com"
+  default :from => "Defriendalize <no-reply@defriendalize.com>"
   
   def welcome(user)
     @user = user
