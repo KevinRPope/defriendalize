@@ -18,7 +18,7 @@ class Connection < ActiveRecord::Base
   end
   #handle_asynchronously :create_connections
 
-  def self.check_connections(user, email_check = nil)
+  def self.check_connections(user, email_check = false)
     new_friend_data = talk_to_facebook(user, "friends")
     new_array = Array.new
     old_friend_data = Connection.where(:last_action => ['create', 'Created Connection', 'New Connection', 'Reactivated Account', 'Refriended']).find_all_by_user_facebook_id(user.uid, :select => "friend_facebook_id")
@@ -73,9 +73,12 @@ class Connection < ActiveRecord::Base
       end
       friend_in_db.save
     end
-
-    if email_check && User.find(user.id).email_me
+    total = new_count + cancel + refriend + reactivate + defriend_count
+    p "total: " + total.to_s
+    if email_check && User.find(user.id).email_me && (total > 0)
       Notifier.friend_update(user, new_count, cancel, refriend, reactivate, defriend_count).deliver
+      user.updated_at = Time.now
+      p user.save
     end
       
   end

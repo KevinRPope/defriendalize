@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
     p @user
     @friend_count = Connection.where(:last_action => ['New Connection', 'Created Connection', 'create', 'Refriended']).find_all_by_user_id(session[:user_id]).count
-    
+    p close_instructions = Delayed_Job.where(["handler LIKE ?","%method_name: :worker_close%"]).all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

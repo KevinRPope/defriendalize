@@ -23,11 +23,6 @@
 		Location: <%= @user.location.capitalize -%>
 	</li>
 	<% end -%>
-	<% unless @user.relationship_status.nil? -%>
-	<li class="profile_info">
-		Relationship Status: <%= @user.relationship_status.capitalize -%>
-	</li>
-	<% end -%>
 	<% unless @user.email.nil? -%>
 	<li class="profile_info">
 		Email Address: <%= @user.email -%>
