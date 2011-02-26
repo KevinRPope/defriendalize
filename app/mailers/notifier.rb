@@ -24,4 +24,6 @@ class Notifier < ActionMailer::Base
   def email_unsubscribe(user)
     @user = user
   end
+  
+
 end

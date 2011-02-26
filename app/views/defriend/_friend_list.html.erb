@@ -20,7 +20,7 @@
 		<div class="notice">
 		<span class="notice"></span>
 	  <% end %>
-	  		<%= connection.friend_name %>:<br />
+	  		<%= link_to connection.friend_name, "http://www.facebook.com/profile.php?id=" + connection.friend_facebook_id, :target => "_blank" -%>:<br />
 			<%= connection.last_action.capitalize %>
 		</div>
 		<div class="clear"></div>

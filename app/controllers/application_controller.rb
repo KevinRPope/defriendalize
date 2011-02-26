@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
       format.html { redirect_to(users_path) }
       format.xml  { head :ok }
     end
-  end
+  end   
   
 end

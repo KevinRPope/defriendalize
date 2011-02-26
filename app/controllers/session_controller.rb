@@ -11,21 +11,33 @@ class SessionController < ApplicationController
       Autoscale.new_user_autoscale(user, auth)
     end
     #
+    p "source: " + session[:source].to_s
     session[:user_id] = user.id
     session[:expire] = 1.day.from_now
-    redirect_to root_path, :notice => "Signed in!"
+    if session[:source] == "facebook"
+      redirect_to canvas_index_path, :notice => "Signed in!"
+    else
+      redirect_to root_path, :notice => "Signed in!"
+    end
   end
 
   def destroy
     session[:user_id] = nil
     session[:expire] = 1.day.ago
-    redirect_to root_path, :notice => "Signed out!"
-  end
+    if session[:source] == "facebook"
+      redirect_to canvas_index_path, :notice => "Signed out!"
+    else
+      redirect_to root_path, :notice => "Signed out!"
+    end  end
   
   def facebook_destroy
     session[:user_id] = nil
     session[:expire] = 1.day.ago
-    redirect_to "http://m.facebook.com/logout.php?confirm=1&next=http://www.defriendalize.com"
+    if session[:source] == "facebook"
+      redirect_to "http://m.facebook.com/logout.php?confirm=1&next=http://www.defriendalize.com/canvas"
+    else
+      redirect_to "http://m.facebook.com/logout.php?confirm=1&next=http://www.defriendalize.com"
+    end
   end
 
   def FAQ
@@ -38,6 +50,12 @@ class SessionController < ApplicationController
   end
   
   def privacy_policy
+  end
+  
+  def facebook_login
+    (request.env["HTTP_REFERER"].include? "canvas") ? session[:source] = "facebook" : session[:source] = "web"
+    Autoscale.check_workers
+    redirect_to "/auth/facebook"
   end
   
 end

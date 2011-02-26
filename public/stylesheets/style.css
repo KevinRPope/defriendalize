@@ -8,7 +8,7 @@ body {
 .main-holder {
 	background-color: #696969; 
 	font: 16px arial, sans-serif;
-	width:80%;
+	width:1100px;
 	/*float:left;*/
 	margin: 0px auto;
 }
@@ -73,6 +73,7 @@ h1 {
 	padding: 10px 20px 10px 10px;
 	color:#eee;
 	display:inline-block;
+	float:left;
 }
 .footer-tag a { color: #eee; }
 .footer-tag a:visited { color: #eee; }
@@ -135,6 +136,17 @@ h1 {
 }
 .clear{
 	clear:both;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+.clearfix {
+	display: inline-block;
 }
 .change_list, #change_list{
 	list-style-type:none;
@@ -200,10 +212,13 @@ a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #000; background-color:#fff; }
 
-a.image_link {color: #fff; background-color:#fff; text-decoration: none;}
-a.image_link:visited {color: #fff; background-color:#fff;}
-a.image_link:hover {color: #fff; background-color:#fff; text-decoration: none;}
+a.image_link {color: #fff; background-color:#fff; text-decoration: none; border:none;}
+a.image_link:visited {color: #fff; background-color:#fff; border:none;}
+a.image_link:hover {color: #fff; background-color:#fff; text-decoration: none; border:none;}
 
+.error a, .error a:visited, .error a:hover {color: #af0100; background:inherit; }
+.warning a, .warning a:visited, .warning a:hover {color: #a26a1a; background:inherit; }
+.notice a, .notice a:visited, .notice a:hover { color: #41612f; background:inherit; }
 div.field, div.actions {
   margin-bottom: 10px;
 }

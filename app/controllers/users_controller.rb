@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    @users = User.order(:created_at => "DESC").limit(10).all
+    @user_count = User.all.count
     @num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
     @jobs = Delayed_Job.all
     @job_count = Delayed_Job.all.count
@@ -21,25 +22,35 @@ class UsersController < ApplicationController
     User.unsubscribe(params[:uid])
     flash[:notice] = 'You have been unsubscribed from all emails'
     if session[:user_id]
-      redirect_to user_path :id => session[:user_id] 
+      if session[:source] == "facebook"
+        redirect_to canvas_profile_path
+      else
+        redirect_to user_path_path
+      end
     else
-      redirect_to root_path
+      if session[:source] == "facebook"
+        redirect_to root_path
+      else
+        redirect_to canvas_index_path
+      end
     end
   end
   
   def resubscribe
     User.resubscribe(session[:user_id])
     flash[:notice] = 'You have been resubscribed to all emails'
-    redirect_to user_path
+    if session[:source] == "facebook"
+      redirect_to canvas_profile_path
+    else
+      redirect_to user_path_path
+    end
   end
   
   # GET /users/1
   # GET /users/1.xml
   def show
     @user = User.find(session[:user_id])
-    p @user
     @friend_count = Connection.where(:last_action => ['New Connection', 'Created Connection', 'create', 'Refriended']).find_all_by_user_id(session[:user_id]).count
-    p close_instructions = Delayed_Job.where(["handler LIKE ?","%method_name: :worker_close%"]).all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -103,7 +114,15 @@ class UsersController < ApplicationController
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to(root_path) }
+      format.html { 
+        if session[:source] == "facebook"
+          flash[:notice] = "You have deleted your account"
+          redirect_to(canvas_index_path)
+        else
+          flash[:notice] = "You have deleted your account"
+          redirect_to(root_path)
+        end
+      }
       format.xml  { head :ok }
     end
   end
@@ -112,8 +131,12 @@ class UsersController < ApplicationController
   
   def authorize
     unless session[:user_id] == 1
-      redirect_to root_path
       flash[:notice] = "You are not authorized to perform this function"
+      if session[:source] == "facebook"
+        redirect_to canvas_index_path
+      else
+        redirect_to root_path
+      end
     end
   end
 end

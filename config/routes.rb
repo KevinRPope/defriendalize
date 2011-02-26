@@ -3,7 +3,7 @@ Defriend::Application.routes.draw do
   get "session/create"
   get "session/destroy"
 
-  match 'users/profile' => 'users#show'
+  match 'users/profile' => 'users#show', :as => :user_path
   match 'users/unsubscribe/:uid' => 'users#unsubscribe#uid', :as => :unsubscribe
   match 'users/resubscribe/:id' => 'users#resubscribe#id', :as => :resubscribe
   match 'users/delete_account' => 'users#delete_account', :as => :delete_account
@@ -16,6 +16,7 @@ Defriend::Application.routes.draw do
   match 'signout' => "session#destroy", :as => :signout
   match 'facebook_signout' => "session#facebook_destroy", :as => :facebook_signout
   match 'destroy_job/:id' => 'application#destroy_job#id', :as => :destroy_job
+  match 'session/facebook_login' => 'session#facebook_login', :as => :facebook_login
 
   match 'canvas/faq' => 'canvas#faq', :as => :canvas_faq
   match 'canvas/contact_us' => 'canvas#contact_us', :as => :canvas_contact_us
