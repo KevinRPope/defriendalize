@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.limit(10).order(:created_at => "DESC").all
+    @users = User.limit(10).order("created_at DESC").all
     @user_count = User.all.count
     @num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
     @jobs = Delayed_Job.all
