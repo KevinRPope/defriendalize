@@ -210,14 +210,14 @@ li{
 }
 a { color: #000; }
 a:visited { color: #666; }
-a:hover { color: #000; background-color:#fff; }
+a:hover { color: #000; }
 
 a.image_link {color: #fff; background-color:#fff; text-decoration: none; border:none;}
 a.image_link:visited {color: #fff; background-color:#fff; border:none;}
 a.image_link:hover {color: #fff; background-color:#fff; text-decoration: none; border:none;}
 
 .error a, .error a:visited, .error a:hover {color: #af0100; background:inherit; }
-.warning a, .warning a:visited, .warning a:hover {color: #a26a1a; background:inherit; }
+.warning a, .warning a:visited, .warning a:hover {color: #a26a1a; }
 .notice a, .notice a:visited, .notice a:hover { color: #41612f; background:inherit; }
 div.field, div.actions {
   margin-bottom: 10px;

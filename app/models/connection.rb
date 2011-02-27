@@ -45,7 +45,7 @@ class Connection < ActiveRecord::Base
           update_connection.save
           refriend = refriend + 1
         elsif update_connection.last_action == 'Canceled Account or Changed Privacy Settings'
-          update_connection.last_action = 'Reactived Account'
+          update_connection.last_action = 'Reactivated Account'
           update_connection.save   
           reactivate = reactivate + 1   
         end
@@ -83,7 +83,16 @@ class Connection < ActiveRecord::Base
       
   end
   #handle_asynchronously :check_connections
-
+  
+  def self.correct_reactived
+    reactived = Connection.where(:last_action => 'Reactived Account')
+    reactived.each do |r|
+      r.last_action = 'Reactivated Account'
+      p r.friend_name
+      r.save
+    end
+  end
+  
 private
 
   def self.talk_to_facebook(user, info)
