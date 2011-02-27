@@ -2,7 +2,9 @@
 // This file is automatically included by javascript_include_tag :defaults
 $(document).ready(function() {
 	$('p.notice, p.warning, p.error').delay(2500).fadeOut(1500);
-	check_updates();
+	if (document.title == "Your friend change list") {
+		check_updates();
+	}
 });
 
 function check_updates() {
