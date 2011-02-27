@@ -161,50 +161,65 @@ li{
 	margin:10px;
 	border:0px	;
 }
-.notice,
-.warning,
-.error {
+.notice_item,
+.warning_item,
+.error_item {
   font-size: 18px;
   padding: 15px 10px;
   margin-bottom:-20px;
   width:500px;
 }
-
-.notice span,
-.warning span,
-.error span {
+.spinner {
+  font-size: 18px;
+  padding: 15px 10px;
+  margin-bottom:-36px;
+  width:500px;
+}
+.notice_item span,
+.warning_item span,
+.error_item span,
+.spinner span {
   float: left;
   width: 42px;
   height: 48px;
   margin-top:-5px;
 }
+.spinner {
+  background: #FFF;
+  color: #000; 
+  border:#000 1px solid;
+}
+.spinner span {
+  background: url(../images/ajax-loader.gif) no-repeat 4px -1px;
+  border:none;
+}
 
-.notice {
+.notice_item {
   background: url(../images/flash-notice-bg.jpg) repeat-x left top;
   color: #41612f; 
   border:#41612f 1px solid;
 }
-.notice span {
+.notice_item span {
   background: url(../images/flash-check.png) no-repeat 5px 7px;
   border:none;
 }
 
-.warning {
+.warning_item {
   background: url(../images/flash-warning-bg.jpg) repeat-x left -10px;
   color: #a26a1a;
   border:#a26a1a 1px solid;
 }
-.warning span {
+.warning_item span {
   background: url(../images/flash-warning.png) no-repeat 5px 7px;
   border:none;
 }
 
-.error {
+.error_item {
   background: url(../images/flash-error-bg.jpg) repeat-x left -10px;
   border:#af0100 1px solid;
   color: #af0100;
 }
-.error span {
+.error_item span {
   background: url(../images/flash-error.png) no-repeat 5px 7px;
   border:none;
 }
@@ -216,9 +231,9 @@ a.image_link {color: #fff; background-color:#fff; text-decoration: none; border:
 a.image_link:visited {color: #fff; background-color:#fff; border:none;}
 a.image_link:hover {color: #fff; background-color:#fff; text-decoration: none; border:none;}
 
-.error a, .error a:visited, .error a:hover {color: #af0100; background:inherit; }
-.warning a, .warning a:visited, .warning a:hover {color: #a26a1a; }
-.notice a, .notice a:visited, .notice a:hover { color: #41612f; background:inherit; }
+.error_item a, .error_item a:visited, .error_item a:hover {color: #af0100; background:inherit; }
+.warning_item a, .warning_item a:visited, .warning_item a:hover {color: #a26a1a; }
+.notice_item a, .notice_item a:visited, .notice_item a:hover { color: #41612f; background:inherit; }
 div.field, div.actions {
   margin-bottom: 10px;
 }
@@ -252,4 +267,7 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+.struck{
+	text-decoration:line-through;
 }

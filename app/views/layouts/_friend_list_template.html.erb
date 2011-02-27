@@ -1,0 +1,47 @@
+<ul id="change_list">
+<% if connections.empty? -%>
+	<% if queued > 0 -%>
+		<li id="updated">
+			<div class="spinner">
+				<span class="spinner"></span>
+				Checking for friend updates...
+			</div>
+			<div class="clear"></div>		
+		</li>
+	<% else -%>
+		<li class="profile_info">No changes in your list of friends.  Yet.</li>
+	<% end -%>
+<% else%>
+	<li class="profile_info">
+		Your friend list activity for the last 30 days:
+	</li>
+	<% if queued > 0 -%>
+	<li id="updated">
+		<div class="spinner">
+			<span class="spinner"></span>
+			Checking for friend updates...
+		</div>
+		<div class="clear"></div>		
+	</li>
+	<% end%>
+	<% connections.each do |connection| %>
+	<li>
+	  <% if connection.last_action == 'Defriended'%>
+		<div class="error_item">
+		<span class="error_item"></span>
+	  <% elsif connection.last_action == 'Canceled Account or Changed Privacy Settings'-%>
+		<div class="warning_item">
+		<span class="warning_item"></span>
+	  <% else %>
+		<div class="notice_item">
+		<span class="notice_item"></span>
+	  <% end %>
+	  		<%= link_to connection.friend_name, "http://www.facebook.com/profile.php?id=" + connection.friend_facebook_id, :target => "_blank" -%>:<br />
+			<%= connection.last_action.capitalize %>
+		</div>
+		<div class="clear"></div>
+	</li>
+
+	  <% end -%>
+	</ul>
+<% end -%>

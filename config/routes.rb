@@ -17,6 +17,8 @@ Defriend::Application.routes.draw do
   match 'facebook_signout' => "session#facebook_destroy", :as => :facebook_signout
   match 'destroy_job/:id' => 'application#destroy_job#id', :as => :destroy_job
   match 'session/facebook_login' => 'session#facebook_login', :as => :facebook_login
+  match 'defriend/friend_list_update' => 'defriend#friend_list_update', :as => :friend_check
+  match 'defriend/update_checkin' => 'defriend#update_checkin'
 
   match 'canvas/faq' => 'canvas#faq', :as => :canvas_faq
   match 'canvas/contact_us' => 'canvas#contact_us', :as => :canvas_contact_us

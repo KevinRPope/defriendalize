@@ -5,10 +5,12 @@ class DefriendController < ApplicationController
 		
     if session[:user_id]
       if (session[:expire] > Time.now)
+        Connection.delay.check_connections(@user)
         @connections = Connection.where(:user_id => session[:user_id], :last_action => ['Defriended', 'Refriended', 'Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
+        p @queued = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.count
       else
         session[:user_id] = nil
-        flash[:notice] = "You have been logged out because it's been more than 24 hours since you last logged in"
+        flash[:warning] = "You have been logged out because it's been more than 24 hours since you last logged in"
       end
     end 
     
@@ -17,11 +19,18 @@ class DefriendController < ApplicationController
     end
   end
   
-  def friend_list_update_check
-    if Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.empty?
-      p "It's not there!"
-    else
-      p "It's still there!"
+  def friend_list_update
+    @connections = Connection.where(:user_id => session[:user_id], :last_action => ['Defriended', 'Refriended', 'Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
+    @queued = 0
+    respond_to do |format|
+      format.js
     end
   end
+  
+  def update_checkin
+    @check = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.empty?
+    render :layout => false
+  end
 end
+
+

@@ -1,32 +1,3 @@
 <% title "Your friend change list" -%>
 <h1><%=yield :title -%></h1>
-<ul id="change_list">
-<% if connections.empty? -%>
-	<li class="profile_info">No changes in your list of friends.  Yet.</li>
-<% else%>
-	<li class="profile_info">
-		Your friend list activity for the last 30 days:
-	</li>
-	<% connections.each do |connection| %>
-
-	<li>
-	  <% if connection.last_action == 'Defriended'%>
-		<div class="error">
-		<span class="error"></span>
-	  <% elsif connection.last_action == 'Canceled Account or Changed Privacy Settings'-%>
-		<div class="warning">
-		<span class="warning"></span>
-	  <% else %>
-		<div class="notice">
-		<span class="notice"></span>
-	  <% end %>
-	  		<%= link_to connection.friend_name, "http://www.facebook.com/profile.php?id=" + connection.friend_facebook_id, :target => "_blank" -%>:<br />
-			<%= connection.last_action.capitalize %>
-		</div>
-		<div class="clear"></div>
-	</li>
-
-	  <% end -%>
-	</ul>
-<% end -%>
-
+<%= render :partial => "/layouts/friend_list_template", :locals => { :connections => connections, :queued => @queued} -%>

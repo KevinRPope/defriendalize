@@ -2,6 +2,9 @@
 <div class="friend_list_holder">
 	<h1><%= yield :title -%></h1>
 	<ul class="faq_list">
-		<li class="answer">Well, about me, really.  Hi, I'm Kevin.  I have dark hair, like warm beer and don't really like walks on the beach at sunset.  I'm usually a member of the 'peanut gallery' that people seem to find inappropriate at fancy functions.  I make bad jokes when I'm uncomfortable, and really bad jokes when I'm comfortable.</li>
+		<li class="answer">Well, about me, really.  Hi, I'm Kevin.  I have dark hair, like warm beer and don't really like walks on the beach at any time of day.  I'm usually a member of the 'peanut gallery' that people seem to find inappropriate at fancy functions.  I make bad jokes when I'm uncomfortable, and really bad jokes when I'm comfortable.  I like coding in my spare time, and this is one of the fruits of my labor.  I hope you like it.  If not, please <%= link_to 'let me know why', contact_us_path -%> so I can improve the experience for everyone.
+		</li>
+		<li class="answer">Some of the images we've <span class="struck">cannibalized</span> used on the site are from <%= link_to 'Ryan Heath\'s', 'http://rpheath.com/', :target => "_blank" %> great <%= link_to 'pretty flash messages plugin', 'http://rpheath.com/posts/379-rails-plugin-for-pretty-flash-messages', :target => "_blank" %> for Rails.  If you want some good-looking notification messages, I suggest using it.  It will help make your site look great.
+		</li>
 	</ul>
 </div>
