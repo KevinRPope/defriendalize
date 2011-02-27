@@ -9,9 +9,10 @@ function check_updates() {
 	$.get('defriend/update_checkin', function(data) {
 		if (data == "false") {
 			setTimeout(check_updates, 3000);
-		} else {
+		} else if (data == "true") {
 			$.get('defriend/friend_list_update')
 		}
+		
 	});
 	
 }

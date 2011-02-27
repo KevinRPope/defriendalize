@@ -28,9 +28,15 @@ class DefriendController < ApplicationController
   end
   
   def update_checkin
-    @check = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.empty?
+    if session[:user_id]
+      @check = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.empty?
+    else
+      @check = "logout"
+    end
     render :layout => false
   end
+  
+  
 end
 
 
