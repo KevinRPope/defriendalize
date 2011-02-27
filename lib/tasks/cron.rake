@@ -7,4 +7,5 @@ task :cron => :environment do
       Connection.check_connections(ul, true)
     end
   #end
+  Notifier.cron_test.deliver
 end

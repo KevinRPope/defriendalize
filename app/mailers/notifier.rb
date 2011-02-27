@@ -25,5 +25,7 @@ class Notifier < ActionMailer::Base
     @user = user
   end
   
-
+  def cron_test()
+    mail(:to => "pope.kevin@gmail.com", :subject => "cron job has run")
+  end
 end
