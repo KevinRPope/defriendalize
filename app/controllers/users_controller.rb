@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @jobs = Delayed_Job.all
     @job_count = Delayed_Job.all.count
     @methods_run = MethodCallLog.all.count
-    @methods_run = MethodCallLog.limit(10).order('created_at DESC').all
+    @methods_all = MethodCallLog.limit(10).order('created_at DESC').all
   end
   
   def delete_account

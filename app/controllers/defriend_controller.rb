@@ -7,8 +7,6 @@ class DefriendController < ApplicationController
       if (session[:expire] > Time.now)
         @connections = Connection.where(:user_id => session[:user_id], :last_action => ['Defriended', 'Refriended', 'Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
         @queued = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.count
-        update_connections
-        #p Notifier.cron_test.deliver
       else
         session[:user_id] = nil
         flash[:warning] = "You have been logged out because it's been more than 24 hours since you last logged in"
