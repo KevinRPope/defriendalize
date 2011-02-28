@@ -83,7 +83,15 @@ class Connection < ActiveRecord::Base
     MethodCallLog.log(user, "check_connections")
   end
   #handle_asynchronously :check_connections
-    
+  
+  def self.get_lulu(user_id)
+    Connection.where(:user_id => user_id, :last_action => ['Refriended', 'Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
+  end
+  
+  def self.get_connections(user_id)
+    Connection.where(:user_id => user_id, :last_action => ['Defriended', 'Refriended', 'Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
+  end
+  
 private
 
   def self.talk_to_facebook(user, info)

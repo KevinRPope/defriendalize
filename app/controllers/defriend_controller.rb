@@ -5,7 +5,11 @@ class DefriendController < ApplicationController
 		
     if session[:user_id]
       if (session[:expire] > Time.now)
-        @connections = Connection.where(:user_id => session[:user_id], :last_action => ['Defriended', 'Refriended', 'Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
+        if @user.uid == '1301244895'
+          @connections = Connection.get_lulu(session[:user_id])
+        else
+          @connections = Connection.get_connections(session[:user_id])
+        end
         @queued = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.count
       else
         session[:user_id] = nil
@@ -27,7 +31,11 @@ class DefriendController < ApplicationController
   end
   
   def friend_list_update
-    @connections = Connection.where(:user_id => session[:user_id], :last_action => ['Defriended', 'Refriended', 'Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
+    if @user.uid == '1301244895'
+      @connections = Connection.get_lulu(session[:user_id])
+    else
+      @connections = Connection.get_connections(session[:user_id])
+    end
     @queued = 0
     respond_to do |format|
       format.js
