@@ -35,7 +35,7 @@
 	<td><%= link_to 'Delete this job', destroy_job_path(job), :confirm => "Are you sure?", :method => :delete -%></td>
   </tr>
   <% end -%>
-<% @methods_all do |meth| -%>
+<% @methods_all.each do |meth| -%>
 	<tr>
 		<td><%= meth.user_id -%></td>
 		<td><%= meth.action -%></td>
