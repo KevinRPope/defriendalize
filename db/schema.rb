@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217100415) do
+ActiveRecord::Schema.define(:version => 20110228083607) do
 
   create_table "connections", :force => true do |t|
     t.string   "user_facebook_id"
@@ -62,19 +62,28 @@ ActiveRecord::Schema.define(:version => 20110217100415) do
 
   add_index "interests", ["user_id"], :name => "index_interests_on_user_id"
 
+  create_table "method_call_logs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "action"
+    t.string   "name"
+    t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "method_call_logs", ["user_id"], :name => "index_method_call_logs_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "uid"
     t.string   "email"
     t.string   "name"
     t.string   "gender"
-    t.string   "birthdate"
     t.string   "profile_picture"
     t.string   "access_token"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.string   "relationship_status"
-    t.boolean  "email_me",            :default => true
+    t.boolean  "email_me",        :default => true
   end
 
 end

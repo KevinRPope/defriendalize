@@ -99,11 +99,9 @@ class Autoscale
     
     def self.delete_worker_close
       close_instructions = Delayed_Job.where(["handler LIKE ?","%method_name: :worker_close%"]).all
-      p "delete_worker_close: " + close_instructions.inspect + " " + Time.now.to_s
       close_instructions.each do |e|
         p e.destroy 
       end
-      p "delete_worker_close: " + close_instructions.inspect + " " + Time.now.to_s
     end
 
 end

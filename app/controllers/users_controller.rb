@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
     @jobs = Delayed_Job.all
     @job_count = Delayed_Job.all.count
+    @methods_run = MethodCallLog.all.count
+    @methods_run = MethodCallLog.limit(10).order('created_at DESC').all
   end
   
   def delete_account
@@ -111,6 +113,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
     Notifier.deleted_account(@user).deliver
     session[:user_id] = nil
+    MethodCallLog.log(@user, "destroy_user")
     @user.destroy
 
     respond_to do |format|

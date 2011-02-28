@@ -15,6 +15,7 @@ class Connection < ActiveRecord::Base
         :user_id => user.id)
     end
     Connection.import connections, :validate => false
+    MethodCallLog.log(user, "create_connections")
   end
   #handle_asynchronously :create_connections
 
@@ -78,21 +79,11 @@ class Connection < ActiveRecord::Base
     if email_check && User.find(user.id).email_me && (total > 0)
       Notifier.friend_update(user, new_count, cancel, refriend, reactivate, defriend_count).deliver
       user.updated_at = Time.now
-      p user.save
     end
-      
+    MethodCallLog.log(user, "check_connections")
   end
   #handle_asynchronously :check_connections
-  
-  def self.correct_reactived
-    reactived = Connection.where(:last_action => 'Reactived Account')
-    reactived.each do |r|
-      r.last_action = 'Reactivated Account'
-      p r.friend_name
-      r.save
-    end
-  end
-  
+    
 private
 
   def self.talk_to_facebook(user, info)
