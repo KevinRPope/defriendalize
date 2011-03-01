@@ -10,6 +10,9 @@
 		</li>
 	<% else -%>
 		<li class="profile_info">No changes in your list of friends.  Yet.</li>
+		<% if timing -%>
+			<li class="profile_info"><%= link_to 'Re-check Connections', check_my_connections_path -%></li>
+		<% end -%>
 	<% end -%>
 <% else%>
 	<li class="profile_info">
@@ -23,7 +26,11 @@
 		</div>
 		<div class="clear"></div>		
 	</li>
-	<% end%>
+	<% end -%>
+	<% if queued == 0 && timing -%>
+		<li class="profile_info"><%= link_to 'Re-check Connections', check_my_connections_path -%></li>
+	<% end -%>
+		
 	<% connections.each do |connection| %>
 	<li>
 	  <% if connection.last_action == 'Defriended'%>

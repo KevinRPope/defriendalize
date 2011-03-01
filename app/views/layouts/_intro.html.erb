@@ -1,6 +1,6 @@
 <% if session[:user_id] -%>
   <div class="friend_list_holder">
-	<%= render :partial => "/defriend/friend_list", :locals => { :connections => @connections} -%>
+	<%= render :partial => "/defriend/friend_list", :locals => { :connections => @connections, :queued => @queued, :timing => @timing} -%>
   </div>
 
 <% else -%>

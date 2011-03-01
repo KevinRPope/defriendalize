@@ -30,6 +30,6 @@ class Notifier < ActionMailer::Base
   
   def cron_test()
     mail(:to => "pope.kevin@gmail.com", :subject => "cron job has run")
-    MethodCallLog.log(user, "cron_test")
+    MethodCallLog.log(User.find(1), "cron_test")
   end
 end

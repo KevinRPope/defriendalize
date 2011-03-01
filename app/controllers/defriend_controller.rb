@@ -10,7 +10,9 @@ class DefriendController < ApplicationController
         else
           @connections = Connection.get_connections(session[:user_id])
         end
+#        Connection.check_connections(User.find(session[:user_id]))
         @queued = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.count
+        @timing = MethodCallLog.where(:action => "check_connections", :updated_at => 3.hours.ago.to_time..Time.now.to_time).first.nil?
       else
         session[:user_id] = nil
         flash[:warning] = "You have been logged out because it's been more than 24 hours since you last logged in"
@@ -20,6 +22,13 @@ class DefriendController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
     end
+  end
+  
+  def check_my_connections
+    Autoscale.check_workers
+    Connection.delay.check_connections(User.find(session[:user_id]))
+    Autoscale.check_worker_close
+    redirect_to root_path
   end
   
   def update_connections
@@ -37,6 +46,7 @@ class DefriendController < ApplicationController
       @connections = Connection.get_connections(session[:user_id])
     end
     @queued = 0
+    @timing = MethodCallLog.where(:action => "check_connections", :updated_at => 3.hours.ago.to_time..Time.now.to_time).first.nil?
     respond_to do |format|
       format.js
     end

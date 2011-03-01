@@ -19,6 +19,7 @@ Defriend::Application.routes.draw do
   match 'session/facebook_login' => 'session#facebook_login', :as => :facebook_login
   match 'defriend/friend_list_update' => 'defriend#friend_list_update', :as => :friend_check
   match 'defriend/update_checkin' => 'defriend#update_checkin'
+  match 'defriend/check_my_connections' => 'defriend#check_my_connections', :as => :check_my_connections
 
   match 'canvas/faq' => 'canvas#faq', :as => :canvas_faq
   match 'canvas/contact_us' => 'canvas#contact_us', :as => :canvas_contact_us
