@@ -34,6 +34,7 @@ class Notifier < ActionMailer::Base
   end
   
   def deauth_test()
+    cipher_token = @cipher_token
     mail(:to => "pope.kevin@gmail.com", :subject => "user has deauthorized your application")
   end
 end
