@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  skip_before_filter :session, :only => [:deauthorize]
+  skip_before_filter :session, :except => [:deauthorize]
   before_filter :get_email
   
   def get_email
