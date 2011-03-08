@@ -1,4 +1,6 @@
 class SessionController < ApplicationController
+  protect_from_forgery :except => :deauthorize
+  
   def create
     #raise request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
