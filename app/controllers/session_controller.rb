@@ -45,9 +45,10 @@ class SessionController < ApplicationController
   end
   
   def deauthorize
-    p params[:signed_request]
-    p ENV
-    Notifier.deauth_test.deliver    
+    p encoded_token = params[:signed_request].split('.')[1]
+    p cipher_token = encoded_token.tr('-_','+/').unpack('m')[0]
+    Notifier.deauth_test.deliver
+    head :ok   
   end
 
   def FAQ
