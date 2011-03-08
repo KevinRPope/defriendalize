@@ -47,7 +47,7 @@ class SessionController < ApplicationController
   def deauthorize
     p params[:signed_request]
     p ENV
-    Notifier.deleted_account(@user).deliver    
+    Notifier.deauth_test.deliver    
   end
 
   def FAQ

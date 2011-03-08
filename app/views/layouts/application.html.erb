@@ -34,7 +34,7 @@
 		
 			<h1><%= yield :title -%></h1>
 			
-			<!-- AddThis Button BEGIN 
+			<% unless ENV["RAILS_ENV"] == "production" -%><!-- AddThis Button BEGIN -->
 			<div class="addthis_toolbox addthis_default_style "
 			addthis:url="http://defriendalize.com"
 			addthis:title="Defriendalize.com - track your Facebook friend list."
@@ -46,7 +46,7 @@
 			<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
 			<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4d6e0bc871bf1f66"></script>
 			<!-- AddThis Button END -->
-
+			<% end -%>
 			<div class="clear"></div>
 			
 			<%= yield %>
