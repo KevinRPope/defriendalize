@@ -27,7 +27,11 @@
 		
 		<%= render :partial => 'layouts/sign_in_area', :locals => { :user => @user} -%>
 		<div class="clear"></div>
+		
 		<div class="main-content">
+		
+			<h1><%= yield :title -%></h1>
+		
 			<%= yield %>
 	
 			<%= render :partial => 'layouts/rhs_ads' -%>

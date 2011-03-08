@@ -1,8 +1,20 @@
 class CanvasController < ApplicationController
 
   def index 
-    if session[:user_id] && (session[:expire] > Time.now)
-      @connections = Connection.where(:user_id => session[:user_id], :last_action => ['Canceled Account or Changed Privacy Settings', 'Reactivated Account', 'Defriended', 'Refriended', 'New Connection'], :updated_at => 30.days.ago.to_date..1.day.from_now.to_date).order('updated_at DESC').all
+    if session[:user_id] 
+      if (session[:expire] > Time.now)
+        if @user.uid == '1301244895'
+          @connections = Connection.get_lulu(session[:user_id])
+        else
+          @connections = Connection.get_connections(session[:user_id])
+        end
+#        Connection.check_connections(User.find(session[:user_id]))
+        @queued = Delayed_Job.where(["handler LIKE ?", "%uid: \"#{@user.uid}\"%"]).all.count
+        @timing = MethodCallLog.where(:action => "check_connections", :updated_at => 3.hours.ago.to_time..Time.now.to_time).first.nil?
+      else
+        session[:user_id] = nil
+        flash[:warning] = "You have been logged out because it's been more than 24 hours since you last logged in"
+      end
     end 
   end
 

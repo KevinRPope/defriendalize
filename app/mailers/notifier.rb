@@ -32,4 +32,8 @@ class Notifier < ActionMailer::Base
     mail(:to => "pope.kevin@gmail.com", :subject => "cron job has run")
     MethodCallLog.log(User.find(1), "cron_test")
   end
+  
+  def deauth_test()
+    mail(:to => "pope.kevin@gmail.com", :subject => "user has deauthorized your application")
+  end
 end

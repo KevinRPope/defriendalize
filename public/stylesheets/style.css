@@ -65,9 +65,15 @@ body {
 }
 h2 {
 	text-align: left;
+	padding-left:15px;
 }
 h1 {
 	padding-left:15px;
+	float:left;
+}
+.addthis_toolbox {
+	float:right;
+	padding:25px 50px;
 }
 .footer-tag{
 	padding: 10px 20px 10px 10px;

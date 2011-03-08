@@ -43,6 +43,12 @@ class SessionController < ApplicationController
     end
     
   end
+  
+  def deauthorize
+    p params[:signed_request]
+    p ENV
+    Notifier.deleted_account(@user).deliver    
+  end
 
   def FAQ
   end

@@ -8,6 +8,7 @@ Defriend::Application.routes.draw do
   match 'users/resubscribe/:id' => 'users#resubscribe#id', :as => :resubscribe
   match 'users/delete_account' => 'users#delete_account', :as => :delete_account
   match 'auth/facebook/callback' => "session#create"
+  match 'session/deauthorize' => "session#deauthorize"
   match 'auth/failure' => 'session#FAQ'  #change this to a page asking why they said no.
   match 'FAQ' => 'session#FAQ', :as => :faq
   match 'contact_us' => 'session#contact_us', :as => :contact_us
