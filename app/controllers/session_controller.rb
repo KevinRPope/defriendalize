@@ -49,9 +49,11 @@ class SessionController < ApplicationController
   def deauthorize
     hash, encoded_token = params[:signed_request].split('.')
     encoded_token += '=' * (4 - encoded_token.length.modulo(4))
-    p @cipher_token = ActiveSupport::JSON.decode(Base64.decode64(encoded_token.tr('-_','+/')))
-    p User.find_by_uid(@cipher_token["user_id"])
-    Notifier.deauth_test(@cipher_token).deliver
+    @cipher_token = ActiveSupport::JSON.decode(Base64.decode64(encoded_token.tr('-_','+/')))
+    @user = User.find_by_uid(@cipher_token["user_id"])
+    @user.email_me = false
+    @user.access_token = nil
+    @user.save
     head :ok   
   end
 
