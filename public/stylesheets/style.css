@@ -45,15 +45,23 @@ body {
 	display:inline;
 }
 .rhs_ad{
-	margin-right:auto;
-	margin-left:auto;
-	width:320px;
-	padding:10px;
-	height:270px;
+	margin:auto;
+	text-align:center;
 }
 .profile_info{
 	font: 18px arial, sans-serif;	
 	padding:8px;
+}
+.delete_account_link{
+	font: 18px arial, sans-serif;	
+	padding:50px 8px 8px 8px;	
+}
+.logo{
+	font: 32px arial, sans-serif;
+	font-weight: bold;
+	padding:10px 20px;
+	color: #000;
+	float:left;
 }
 .faq_question{
 	font-style:bold;
@@ -229,17 +237,23 @@ li{
   background: url(../images/flash-error.png) no-repeat 5px 7px;
   border:none;
 }
+
 a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #000; }
 
-a.image_link {color: #fff; background-color:#fff; text-decoration: none; border:none;}
-a.image_link:visited {color: #fff; background-color:#fff; border:none;}
-a.image_link:hover {color: #fff; background-color:#fff; text-decoration: none; border:none;}
+.logo a { color: #FFF; text-decoration: none;}
+.logo a:visited { color: #FFF; text-decoration: none;}
+.logo a:hover { color: #FFF; }
+
+a.image_link {color: #fff; background-color:#fff; text-decoration: none; border:0px;}
+a.image_link:visited {color: #fff; background-color:#fff; border:0px;}
+a.image_link:hover {color: #fff; background-color:#fff; text-decoration: none; border:0px;}
 
 .error_item a, .error_item a:visited, .error_item a:hover {color: #af0100; background:inherit; }
 .warning_item a, .warning_item a:visited, .warning_item a:hover {color: #a26a1a; }
 .notice_item a, .notice_item a:visited, .notice_item a:hover { color: #41612f; background:inherit; }
+
 div.field, div.actions {
   margin-bottom: 10px;
 }

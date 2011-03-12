@@ -1,9 +1,11 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 $(document).ready(function() {
-	$('p.notice, p.warning, p.error').delay(2500).fadeOut(1500);
+	$('p.notice, p.warning, p.error').delay(25000).slideUp(1500);
 	if (document.title == "Your friend change list") {
-		check_updates();
+		if ($('#updated').height()) {
+			check_updates();
+		}
 	}
 });
 

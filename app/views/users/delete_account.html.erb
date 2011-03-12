@@ -1,16 +1,15 @@
 <% if session[:user_id] -%>
-  	<% title "Are you SURE you want to delete your account?"%>
+  	<% title "Are you SURE about account deletion?"%>
 	<div class="friend_list_holder">
   	
 	<p>You won't be able to track the changes in your friend list and the entire history we've accumulated will be deleted as well.</p>
 	<p>There is no way to undo this action!</p>
 	
-	<p>If you are sure you want to delete your account and all the information we have regarding your account, follow the link below.  You can also <%= link_to 'go back to the homepage', root_path -%> if you've decided to keep your account.
+	<p>If you are sure you want to delete your account and all the information we have regarding your account, follow the link below.  You can also <%= link_to 'go back to the homepage', root_path -%> if you've decided to keep your account.</p>
  	
-	<p><%= link_to 'Delete Your Account', @user, :confirm => "There is no way to undo this action!", :method => :delete %></p>
+	<p><%= button_to 'Delete Your Account', @user, :confirm => "There is no way to undo this action!", :method => :delete %></p>
 	
 	</div>
-	<div class="clear"></div>
   
 <% else -%>
 	<% title "Login to see any changes to your friend list!"%>

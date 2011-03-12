@@ -52,6 +52,7 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(session[:user_id])
+    @app_id = @user.access_token.to_s.split("|")[0]    
     @friend_count = Connection.where(:last_action => ['New Connection', 'Created Connection', 'create', 'Refriended']).find_all_by_user_id(session[:user_id]).count
     respond_to do |format|
       format.html # show.html.erb
@@ -114,7 +115,7 @@ class UsersController < ApplicationController
     Notifier.deleted_account(@user).deliver
     session[:user_id] = nil
     MethodCallLog.log(@user, "destroy_user")
-    @user.destroy
+    @user.delay.destroy
 
     respond_to do |format|
       format.html { 

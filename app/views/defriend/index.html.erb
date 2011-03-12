@@ -1,4 +1,4 @@
 
 
-	<%= render :partial => '/layouts/intro' -%>
+	<%= render :partial => '/layouts/intro', :locals => { :connections => @connections, :queued => @queued, :timing => @timing} -%>
 	
