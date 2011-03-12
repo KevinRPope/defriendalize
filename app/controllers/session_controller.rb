@@ -29,7 +29,6 @@ class SessionController < ApplicationController
       if user_status == "new"
         redirect_to "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://www.defriendalize.com/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/", :notice => "Signed in!"
       else
-        p "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://www.defriendalize.com/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/", :notice => "Signed in!"
         redirect_to root_path, :notice => "Signed in!"
       end
     end

@@ -22,8 +22,10 @@ class Connection < ActiveRecord::Base
   def self.check_connections(user, email_check = false)
     if user.access_token
       new_friend_data = talk_to_facebook(user, "friends")
+      p "new_friend_data init: " + new_friend_data.inspect
       new_array = Array.new
       old_friend_data = Connection.where(:last_action => ['create', 'Created Connection', 'New Connection', 'Reactivated Account', 'Refriended']).find_all_by_user_id(user.id, :select => "friend_facebook_id")
+      p "old_friend_data init: " + old_friend_data.inspect
       old_array = Array.new
       old_friend_data.each do |o|
         old_array << o.friend_facebook_id
@@ -33,6 +35,7 @@ class Connection < ActiveRecord::Base
       end
     
       new_friends = (new_array - old_array)
+      p "new_friends init: " + new_friends.inspect
       #connections = Array.new
       refriend = 0
       reactivate = 0
@@ -64,6 +67,7 @@ class Connection < ActiveRecord::Base
       end
 
       defriend = (old_array - new_array)
+      p "defriend init: " + defriend.inspect
       defriend.each do |friend|
         friend_in_db = Connection.find_by_user_facebook_id_and_friend_facebook_id(user.uid, friend)
         if account_exists(friend)
