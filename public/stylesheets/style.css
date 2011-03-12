@@ -52,6 +52,11 @@ body {
 	font: 18px arial, sans-serif;	
 	padding:8px;
 }
+.share_link{
+	font: 20px arial, sans-serif;	
+	padding:18px 8px;
+	margin-left:100px;
+}
 .delete_account_link{
 	font: 18px arial, sans-serif;	
 	padding:50px 8px 8px 8px;	

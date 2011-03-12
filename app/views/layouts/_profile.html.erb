@@ -1,7 +1,7 @@
 <% title "Your Profile Information"%>
 <div class="friend_list_holder">
 <ul class="change_list">
-	<li class="profile_info">
+	<li class="share_link">
 		<%= link_to 'Share Defriendalize on Facebook!', "http://www.facebook.com/dialog/feed?app_id="+@app_id+"&link=http://www.defriendalize.com/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/" -%>
 	</li>
 	<% unless @user.profile_picture.nil? -%>
