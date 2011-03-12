@@ -1,1 +1,1 @@
-page.replace_html("change_list", :partial => "/layouts/friend_list_template", :locals => { :connections => @connections, :queued => @queued, :timing => @timing})
+page.replace_html(:ajaxy_goodness, :partial => "/layouts/friend_list_template", :locals => { :connections => @connections, :queued => @queued, :timing => @timing})

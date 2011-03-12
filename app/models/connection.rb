@@ -20,7 +20,7 @@ class Connection < ActiveRecord::Base
   #handle_asynchronously :create_connections
 
   def self.check_connections(user, email_check = false)
-    p "test"
+    p user.access_token.nil?
     if user.access_token
       new_friend_data = talk_to_facebook(user, "friends")
       p "new_friend_data init: " + new_friend_data.inspect

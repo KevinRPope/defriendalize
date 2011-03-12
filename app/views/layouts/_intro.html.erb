@@ -1,5 +1,5 @@
 <% if session[:user_id] -%>
-  <div class="friend_list_holder">
+  <div class="friend_list_holder" id="ajaxy_goodness">
 	<%= render :partial => "/defriend/friend_list", :locals => { :connections => @connections, :queued => @queued, :timing => @timing} -%>
   </div>
 
