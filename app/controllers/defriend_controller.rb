@@ -2,7 +2,7 @@ require 'heroku'
 
 class DefriendController < ApplicationController
   def index
-		p ENV
+		p ENV["HTTP_X_HEROKU_QUEUE_WAIT_TIME"].to_i
     if session[:user_id]
       if (session[:expire] > Time.now)
         if @user.uid == '1301244895'
@@ -64,5 +64,6 @@ class DefriendController < ApplicationController
   
   
 end
+
 
 
