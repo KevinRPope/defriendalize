@@ -2,7 +2,7 @@ require 'heroku'
 
 class DefriendController < ApplicationController
   def index
-		
+		p ENV
     if session[:user_id]
       if (session[:expire] > Time.now)
         if @user.uid == '1301244895'
