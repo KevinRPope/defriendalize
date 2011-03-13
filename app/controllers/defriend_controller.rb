@@ -2,7 +2,7 @@ require 'heroku'
 
 class DefriendController < ApplicationController
   def index
-		p ENV["HTTP_X_HEROKU_QUEUE_WAIT_TIME"].to_i
+		p @@heroku.info('empty-journey-469').inspect
     if session[:user_id]
       if (session[:expire] > Time.now)
         if @user.uid == '1301244895'
