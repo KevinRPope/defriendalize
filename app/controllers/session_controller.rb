@@ -20,17 +20,17 @@ class SessionController < ApplicationController
     session[:expire] = 1.day.from_now
     MethodCallLog.log(user, "login")    
     if session[:source] == "facebook"
-      if user_status == "new"
-        redirect_to "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://apps.facebook.com/defriendalize/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/canvas", :notice => "Signed in!"
-      else
+#      if user_status == "new"
+#        redirect_to "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://apps.facebook.com/defriendalize/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/canvas", :notice => "Signed in!"
+#      else
         redirect_to canvas_index_path, :notice => "Signed in!"
-      end
+#      end
     else
-      if user_status == "new"
-        redirect_to "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://www.defriendalize.com/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/", :notice => "Signed in!"
-      else
+#      if user_status == "new"
+#        redirect_to "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://www.defriendalize.com/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/", :notice => "Signed in!"
+#      else
         redirect_to root_path, :notice => "Signed in!"
-      end
+#      end
     end
   end
 

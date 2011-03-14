@@ -66,4 +66,3 @@ class DefriendController < ApplicationController
 end
 
 
-
