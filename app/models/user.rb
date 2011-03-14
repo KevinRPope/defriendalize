@@ -21,23 +21,18 @@ class User < ActiveRecord::Base
       end
     end
   end
-=begin
-  def self.get_birthdate(user)
-    Connection.
-  end
-=end
   
   def self.update_user_info(user, auth)
-      user.email = auth["extra"]["user_hash"]["email"]
-      user.name = auth["extra"]["user_hash"]["name"]
-      user.gender = auth["extra"]["user_hash"]["gender"] || "Not Supplied"
-      user.access_token = auth["credentials"]["token"]
-      if auth["extra"]["user_hash"]["location"]
-        user.location = auth["extra"]["user_hash"]["location"]["name"] || "Not Supplied"
-      end
-      if user.email_me.nil?
-        user.email_me = true
-      end
+    user.email = auth["extra"]["user_hash"]["email"]
+    user.name = auth["extra"]["user_hash"]["name"]
+    user.gender = auth["extra"]["user_hash"]["gender"] || "Not Supplied"
+    user.access_token = auth["credentials"]["token"]
+    if auth["extra"]["user_hash"]["location"]
+      user.location = auth["extra"]["user_hash"]["location"]["name"] || "Not Supplied"
+    end
+    if user.email_me.nil?
+      user.email_me = true
+    end
     user.save
     MethodCallLog.log(user, "update_user_info")
   end

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     erin = User.find(7)
     erin.access_token = nil
     erin.email_me = false
+    erin.save
     p user_list = User.find_by_sql(["select * from users where id not in (select user_id from method_call_logs where (action = ? AND created_at between ? and ?))", 'check_connections', 6.days.ago.to_date, 1.day.from_now.to_date]) 
     
   end
