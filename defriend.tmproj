@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/models/connection.rb</string>
+	<string>app/views/layouts/_about_us.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,49 +21,61 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
+		<key>app/controllers/defriend_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>66</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/controllers/session_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>11</integer>
 				<key>line</key>
-				<integer>31</integer>
+				<integer>7</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>11</integer>
+			<integer>0</integer>
+		</dict>
+		<key>app/controllers/users_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>11</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/models/autoscale.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>16</integer>
 				<key>line</key>
-				<integer>36</integer>
+				<integer>38</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>16</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>35</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>36</integer>
-			</dict>
+			<integer>69</integer>
 		</dict>
 		<key>app/models/connection.rb</key>
 		<dict>
@@ -79,42 +91,42 @@
 			<key>firstVisibleLine</key>
 			<integer>11</integer>
 		</dict>
-		<key>app/views/defriend/index.html.erb</key>
+		<key>app/models/user.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>124</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>2</integer>
+				<integer>35</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/_friend_list_template.html.erb</key>
+		<key>app/views/layouts/_about_us.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>456</integer>
+				<integer>632</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>5</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/_intro.html.erb</key>
+		<key>config/routes.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>52</integer>
+				<integer>53</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -139,12 +151,14 @@
 	<key>openDocuments</key>
 	<array>
 		<string>app/controllers/session_controller.rb</string>
-		<string>app/views/layouts/_friend_list_template.html.erb</string>
-		<string>app/views/defriend/index.html.erb</string>
-		<string>app/views/layouts/_intro.html.erb</string>
+		<string>app/models/user.rb</string>
+		<string>app/controllers/users_controller.rb</string>
+		<string>app/views/layouts/_about_us.html.erb</string>
+		<string>app/controllers/defriend_controller.rb</string>
 		<string>lib/tasks/cron.rake</string>
 		<string>app/models/autoscale.rb</string>
 		<string>app/models/connection.rb</string>
+		<string>config/routes.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

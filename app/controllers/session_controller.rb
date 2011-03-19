@@ -82,7 +82,11 @@ class SessionController < ApplicationController
   end
   
   def facebook_login
-    (request.env["HTTP_REFERER"].include? "canvas") ? session[:source] = "facebook" : session[:source] = "web"
+    if request.env["HTTP_REFERER"]
+      (request.env["HTTP_REFERER"].include? "canvas") ? session[:source] = "facebook" : session[:source] = "web"
+    else
+      session[:source]="web"
+    end
     Autoscale.check_workers
     redirect_to "/auth/facebook"
   end
