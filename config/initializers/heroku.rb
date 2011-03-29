@@ -1,2 +1,2 @@
-@@heroku = Heroku::Client.new('pope.kevin@gmail.com', 'B009ber')
+@@heroku = Heroku::Client.new('pope.kevin@gmail.com', 'Herokupw1')
 @@workers = 0
