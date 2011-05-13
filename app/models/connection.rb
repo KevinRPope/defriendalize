@@ -35,6 +35,7 @@ class Connection < ActiveRecord::Base
         user.email_me = false
         user.access_token = nil
         user.save
+        MethodCallLog.log(@user, "changed password or session expired")
         return false
       end
       new_friend_data["data"].each do |c|
