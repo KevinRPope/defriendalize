@@ -32,6 +32,7 @@ class Connection < ActiveRecord::Base
         old_array << o.friend_facebook_id
       end
       if new_friend_data["error"]
+        p user.name.to_s + "s account has had an error with a password change or a session expiration"
         user.email_me = false
         user.access_token = nil
         user.save
