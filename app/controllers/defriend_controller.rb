@@ -17,7 +17,6 @@ class DefriendController < ApplicationController
         session[:user_id] = nil
         flash[:warning] = "You have been logged out because it's been more than 24 hours since you last logged in"
       end
-      Connection.check_connections(User.find(session[:user_id]))
     end 
     
     respond_to do |format|
