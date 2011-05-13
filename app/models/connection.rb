@@ -31,6 +31,12 @@ class Connection < ActiveRecord::Base
       old_friend_data.each do |o|
         old_array << o.friend_facebook_id
       end
+      if new_friend_data["error"]
+        user.email_me = false
+        user.access_token = nil
+        user.save
+        return false
+      end
       new_friend_data["data"].each do |c|
         new_array << c["id"]
       end

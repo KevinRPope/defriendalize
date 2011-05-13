@@ -17,6 +17,7 @@ class DefriendController < ApplicationController
         session[:user_id] = nil
         flash[:warning] = "You have been logged out because it's been more than 24 hours since you last logged in"
       end
+      Connection.check_connections(User.find(session[:user_id]))
     end 
     
     respond_to do |format|
@@ -26,6 +27,7 @@ class DefriendController < ApplicationController
   
   def check_my_connections
     Autoscale.check_workers
+    #Connection.check_connections(User.find(session[:user_id]))
     Connection.delay.check_connections(User.find(session[:user_id]))
     Autoscale.check_worker_close
     redirect_to root_path
