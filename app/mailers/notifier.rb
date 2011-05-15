@@ -28,6 +28,11 @@ class Notifier < ActionMailer::Base
     @user = user
   end
   
+  def facebook_error(user) #This one is for when the user has changed their FB password or the FB Session has expired.
+    @user = user
+    mail(:to => user.email, :subject => "Your Defriendalize Account Is On Standby")
+  end
+  
   def cron_test()
     mail(:to => "pope.kevin@gmail.com", :subject => "cron job has run")
     MethodCallLog.log(User.find(1), "cron_test")

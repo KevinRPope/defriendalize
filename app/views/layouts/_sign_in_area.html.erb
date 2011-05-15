@@ -5,6 +5,6 @@
 		<span class="difference"><%= link_to 'What\'s the difference?', '/FAQ#logout_buttons' -%></span>
 <% else -%>
 <div class="sign-in-area">
-	<%= link_to image_tag('/images/fb-login-button.png', :alt => 'Sign in with Facebook'), facebook_login_path, :alt => 'Sign in with Facebook' -%>
+	<%= link_to image_tag('/images/fb-login-button.png', :alt => 'Sign in with Facebook'), facebook_login_path, :alt => 'Sign in with Facebook', :class => "image_link" -%>
 <% end -%>
 </div>
