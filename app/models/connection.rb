@@ -23,6 +23,14 @@ class Connection < ActiveRecord::Base
     p user.access_token.nil?
     if user.access_token
       new_friend_data = talk_to_facebook(user, "friends")
+      if new_friend_data["error"]
+        p user.name.to_s + "s account has had an error with a password change or a session expiration"
+        #user.email_me = false
+        user.access_token = nil
+        user.save
+        MethodCallLog.log(user, "changed password or session expired")
+        return false
+      end
       p "new_friend_data init: " + new_friend_data.inspect
       new_array = Array.new
       old_friend_data = Connection.where(:last_action => ['create', 'Created Connection', 'New Connection', 'Reactivated Account', 'Refriended']).find_all_by_user_id(user.id, :select => "friend_facebook_id")
@@ -30,14 +38,6 @@ class Connection < ActiveRecord::Base
       old_array = Array.new
       old_friend_data.each do |o|
         old_array << o.friend_facebook_id
-      end
-      if new_friend_data["error"]
-        p user.name.to_s + "s account has had an error with a password change or a session expiration"
-        user.email_me = false
-        user.access_token = nil
-        user.save
-        MethodCallLog.log(@user, "changed password or session expired")
-        return false
       end
       new_friend_data["data"].each do |c|
         new_array << c["id"]
