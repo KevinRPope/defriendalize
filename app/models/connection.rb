@@ -20,21 +20,21 @@ class Connection < ActiveRecord::Base
   #handle_asynchronously :create_connections
 
   def self.check_connections(user, email_check = false)
-    p user.access_token.nil?
+    #p user.access_token.nil?
     if user.access_token
       new_friend_data = talk_to_facebook(user, "friends")
       if new_friend_data["error"]
-        p user.name.to_s + "s account has had an error with a password change or a session expiration"
+        #p user.name.to_s + "s account has had an error with a password change or a session expiration"
         #user.email_me = false
         user.access_token = nil
         user.save
         MethodCallLog.log(user, "changed password or session expired")
         return false
       end
-      p "new_friend_data init: " + new_friend_data.inspect
+      #p "new_friend_data init: " + new_friend_data.inspect
       new_array = Array.new
       old_friend_data = Connection.where(:last_action => ['create', 'Created Connection', 'New Connection', 'Reactivated Account', 'Refriended']).find_all_by_user_id(user.id, :select => "friend_facebook_id")
-      p "old_friend_data init: " + old_friend_data.inspect
+      #p "old_friend_data init: " + old_friend_data.inspect
       old_array = Array.new
       old_friend_data.each do |o|
         old_array << o.friend_facebook_id
@@ -44,7 +44,7 @@ class Connection < ActiveRecord::Base
       end
     
       new_friends = (new_array - old_array)
-      p "new_friends init: " + new_friends.inspect
+      #p "new_friends init: " + new_friends.inspect
       #connections = Array.new
       refriend = 0
       reactivate = 0
@@ -89,7 +89,7 @@ class Connection < ActiveRecord::Base
         friend_in_db.save
       end
       total = new_count + cancel + refriend + reactivate + defriend_count
-      p "total: " + total.to_s
+      #p "total: " + total.to_s
       if email_check && User.find(user.id).email_me && (total > 0)
         Notifier.friend_update(user, new_count, cancel, refriend, reactivate, defriend_count).deliver
         user.updated_at = Time.now

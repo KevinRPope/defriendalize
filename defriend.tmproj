@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Gemfile</string>
+	<string>app/models/connection.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,33 +21,35 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Gemfile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>app/controllers/session_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>43</integer>
 				<key>line</key>
-				<integer>88</integer>
+				<integer>60</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>40</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>60</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>43</integer>
+				<key>line</key>
+				<integer>60</integer>
+			</dict>
 		</dict>
 		<key>app/models/autoscale.rb</key>
 		<dict>
@@ -79,28 +81,72 @@
 				<integer>36</integer>
 			</dict>
 		</dict>
-		<key>app/models/user.rb</key>
+		<key>app/models/connection.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>35</integer>
+				<integer>43</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>18</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>41</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>43</integer>
+			</dict>
+		</dict>
+		<key>app/views/defriend/index.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>124</integer>
+				<key>line</key>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/application.html.erb</key>
+		<key>app/views/layouts/_intro.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>165</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/layouts/_sign_in_area.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>140</integer>
+				<key>line</key>
+				<integer>7</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
@@ -111,17 +157,31 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>164</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>7</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>140</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>7</integer>
 			</dict>
+		</dict>
+		<key>app/views/layouts/application.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>17</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/notifier/friend_update.html.erb</key>
 		<dict>
@@ -136,36 +196,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>config/environment.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>58</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>58</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
 		</dict>
 		<key>config/initializers/setup_mail.rb</key>
 		<dict>
@@ -195,12 +225,26 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>lib/tasks/cron.rake</key>
+		<key>public/javascripts/application.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>202</integer>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/stylesheets/style.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>14</integer>
 				<key>line</key>
 				<integer>9</integer>
 			</dict>
@@ -209,64 +253,16 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>public/javascripts/application.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>17</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>public/stylesheets/flash.css</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>41</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>3</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>41</integer>
-			</dict>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/controllers/session_controller.rb</string>
-		<string>config/initializers/setup_mail.rb</string>
-		<string>app/views/notifier/friend_update.html.erb</string>
-		<string>config/routes.rb</string>
-		<string>app/models/autoscale.rb</string>
 		<string>app/views/layouts/application.html.erb</string>
-		<string>Gemfile</string>
-		<string>app/models/user.rb</string>
 		<string>public/javascripts/application.js</string>
-		<string>config/environment.rb</string>
-		<string>public/stylesheets/flash.css</string>
+		<string>app/views/layouts/_sign_in_area.html.erb</string>
+		<string>app/views/defriend/index.html.erb</string>
+		<string>app/views/layouts/_intro.html.erb</string>
+		<string>public/stylesheets/style.css</string>
+		<string>app/models/connection.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
