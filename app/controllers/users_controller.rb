@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @job_count = Delayed_Job.all.count
     
   end
+
+  def exclude
+    render :layout => false
+  end
   
   def delete_account
     @user = User.find(session[:user_id])
