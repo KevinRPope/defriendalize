@@ -3,7 +3,7 @@
 <head>
   <title><%= yield :title -%></title>
 <link rel="shortcut icon" href="/images/favicon.ico" >
-<% cache("header") do %>
+<% cache(:header) do %>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js', 'application' %>
   <%= csrf_meta_tag %>
