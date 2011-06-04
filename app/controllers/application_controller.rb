@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_email
-  before_filter :ensure_domain
-
+  if ENV["RAILS_ENV"] == "production"
+    before_filter :ensure_domain
+  end
+    
   APP_DOMAIN = 'www.defriendalize.com'
 
   def ensure_domain

@@ -36,6 +36,7 @@ GEM
     cgi_multipart_eof_fix (2.5.0)
     configuration (1.2.0)
     daemons (1.1.0)
+    dalli (1.0.5)
     delayed_job (2.1.3)
       activesupport (~> 3.0)
       daemons
@@ -146,6 +147,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-import (>= 0.2.0)
+  dalli
   delayed_job
   heroku
   jrails

@@ -1,5 +1,9 @@
 class SessionController < ApplicationController
   protect_from_forgery :except => :deauthorize
+  caches_action :FAQ
+  caches_action :about_us
+  caches_action :privacy_policy
+  caches_action :contact_us
   
   def create
     #raise request.env["omniauth.auth"].to_yaml
@@ -68,7 +72,6 @@ class SessionController < ApplicationController
     @user.save
     head :ok   
   end
-
   def FAQ
     response.headers['Cache-Control'] = 'public, max-age=31000000'
   end
