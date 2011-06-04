@@ -70,15 +70,19 @@ class SessionController < ApplicationController
   end
 
   def FAQ
+    response.headers['Cache-Control'] = 'public, max-age=31000000'
   end
   
   def about_us
+    response.headers['Cache-Control'] = 'public, max-age=31000000'
   end
   
   def contact_us
+    response.headers['Cache-Control'] = 'public, max-age=31000000'
   end
   
   def privacy_policy
+    response.headers['Cache-Control'] = 'public, max-age=31000000'
   end
   
   def facebook_login

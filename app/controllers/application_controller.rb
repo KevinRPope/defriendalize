@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :get_email
-  #before_filter :ensure_domain
+  before_filter :ensure_domain
 
   APP_DOMAIN = 'www.defriendalize.com'
 
