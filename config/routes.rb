@@ -2,7 +2,7 @@ Defriend::Application.routes.draw do
   get "defriend/index"
   get "session/create"
   get "session/destroy"
-  #get "users/exclude"
+  get "users/exclude"
   match 'users/profile' => 'users#show', :as => :user_path
   match 'users/unsubscribe/:uid' => 'users#unsubscribe#uid', :as => :unsubscribe
   match 'users/resubscribe/:id' => 'users#resubscribe#id', :as => :resubscribe
