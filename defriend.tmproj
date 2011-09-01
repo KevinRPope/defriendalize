@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/mailers/notifier.rb</string>
+	<string>app/controllers/users_controller.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -40,30 +40,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>68</integer>
+				<integer>27</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>9</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>68</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
 		</dict>
 		<key>app/mailers/notifier.rb</key>
 		<dict>
@@ -170,7 +154,7 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>41</integer>
+				<integer>52</integer>
 				<key>line</key>
 				<integer>16</integer>
 			</dict>
@@ -178,36 +162,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/views/users/index.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>53</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>53</integer>
-				<key>line</key>
-				<integer>21</integer>
-			</dict>
 		</dict>
 		<key>config/initializers/heroku.rb</key>
 		<dict>
@@ -274,10 +228,8 @@
 		<string>app/models/user.rb</string>
 		<string>app/controllers/defriend_controller.rb</string>
 		<string>app/controllers/users_controller.rb</string>
-		<string>lib/tasks/cron.rake</string>
 		<string>app/mailers/notifier.rb</string>
-		<string>app/views/notifier/cron_test.html.erb</string>
-		<string>app/views/users/index.html.erb</string>
+		<string>app/views/notifier/friend_update.html.erb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
