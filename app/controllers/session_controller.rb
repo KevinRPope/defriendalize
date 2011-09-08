@@ -68,6 +68,7 @@ class SessionController < ApplicationController
     @user.save
     head :ok   
   end
+  
   def FAQ
   end
   
