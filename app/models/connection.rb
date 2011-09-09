@@ -111,6 +111,7 @@ private
 
   def self.talk_to_facebook(user, info)
     friend_request = Net::HTTP.new("graph.facebook.com", 443)
+    friend_request.verify_mode = OpenSSL::SSL::VERIFY_NONE
     friend_request.use_ssl = true
     friend_data_wrapper = friend_request.get("/#{user.uid}/#{info}?access_token=#{user.access_token}")
     friend_data = ActiveSupport::JSON.decode(friend_data_wrapper.body)

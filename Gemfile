@@ -13,5 +13,5 @@ gem 'dalli'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'mongrel'
-  gem 'mysql2'
+  gem 'mysql2', '< 0.3'
 end
