@@ -6,42 +6,26 @@ class Autoscale
   APP_NAME = 'empty-journey-469'
   @@workers
     def self.new_user_autoscale(user, auth)
-      Autoscale.check_workers
-      
       Connection.delay.create_connections(user)
-      #Education.delay.create_education(user, auth)
-      #Interest.delay.create_interests(user)
       User.delay.get_profile_pic(user)
       Notifier.delay.welcome(user)
-      Autoscale.check_worker_close
-      #Connection.delay(:run_at => 7.days.from_now).check_connections(user, true)
-
     end
     
     def self.update_user_autoscale(user, auth)
-      Autoscale.check_workers
-
       Connection.delay.check_connections(user)
-      #Interest.delay.check_interests(user)
-      #User.delay.update_user_info(user, auth)
       User.delay.get_profile_pic(user)
-      Autoscale.check_worker_close
-      
     end
-    
-
     
     def self.check_workers
       p "check_workers"
       if ENV["RAILS_ENV"] == "production"
         @workers = @@heroku.info(APP_NAME)[:workers].to_i
-        p "production. " + @workers.to_s + " workers"
+        p "production " + @workers.to_s + " workers"
         if @workers == 0
           Autoscale.add_workers(1)
           p "adding workers"
-          #Do I need to enter a line here about starting the worker processing jobs?
         else
-          Autoscale.delete_worker_close
+          Autoscale.reset_worker_close
           p "delete workers: " + Time.now.to_s
           #logic to check if the queue is too long and more workers are needed
         end  
@@ -55,9 +39,8 @@ class Autoscale
         if @@workers == 0
           Autoscale.add_workers(1)
           p "adding workers: " + @@workers.to_s + " " + Time.now.to_s
-          #Do I need to enter a line here about starting the worker processing jobs?
         else
-          Autoscale.delete_worker_close
+          Autoscale.reset_worker_close
           p "delete workers: " + Time.now.to_s
           #logic to check if the queue is too long and more workers are needed
         end  
@@ -70,12 +53,16 @@ class Autoscale
       else
         @@workers = 1
       end
+      Autoscale.set_worker_close
     end
     
-    def self.check_worker_close
-      if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date).all.count < 7
-        Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
-      end
+    def self.reset_worker_close
+      Autoscale.delete_worker_close
+      Autoscale.set_worker_close
+    end
+    
+    def self.set_worker_close
+      Autoscale.delay(:run_at => 30.seconds.from_now).worker_close      
     end
     
     def self.worker_close
@@ -86,13 +73,13 @@ class Autoscale
           @@heroku.set_workers(APP_NAME, 0)
         else
           p Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.inspect
-          Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
+          Autoscale.set_worker_close
         end
       else
         if Delayed_Job.where(:run_at => Time.now.to_date..2.days.from_now.to_date, :last_error => nil).all.count.to_i <= 1
           p @@workers = 0
         else
-          p Autoscale.delay(:run_at => 30.seconds.from_now).worker_close
+          p Autoscale.set_worker_close
         end
       end
     end

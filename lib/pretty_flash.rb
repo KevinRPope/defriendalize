@@ -16,7 +16,7 @@ module RPH
   
     module Display
       def display_flash_messages
-        returning html = String.new do
+        String.new.tap do |html|
           flash.each do |css_class, message|
             html << content_tag(:p, content_tag(:span, nil) + message, :class => css_class)
           end
