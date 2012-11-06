@@ -115,7 +115,6 @@ private
     friend_request.use_ssl = true
     friend_data_wrapper = friend_request.get("/#{user.uid}/#{info}?access_token=#{user.access_token}")
     friend_data = ActiveSupport::JSON.decode(friend_data_wrapper.body)
-    raise friend_data.to_yaml
   end  
   
   def self.facebook_fql(user, query)
@@ -124,7 +123,6 @@ private
     friend_request.use_ssl = true
     friend_data_wrapper = friend_request.get("/fql?q=#{query}&access_token=#{user.access_token}")
     friend_data = ActiveSupport::JSON.decode(friend_data_wrapper.body)
-    raise friend_data.to_yaml
   end
   
   def self.post_to_facebook(to_user_id, message, access_token)
@@ -137,7 +135,6 @@ private
      req.use_ssl = true
      req.verify_mode = OpenSSL::SSL::VERIFY_NONE
      post_data_wrapper = req.request(post_request)
-     p post_data_wrapper.body
      friend_data = ActiveSupport::JSON.decode(post_data_wrapper.body)
   end
      

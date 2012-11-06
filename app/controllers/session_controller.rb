@@ -22,7 +22,7 @@ class SessionController < ApplicationController
     end
     #
     session[:user_id] = user.id
-    session[:expire] = 1.day.from_now
+    session[:expire] = 1.year.from_now
     MethodCallLog.log(user, "login")    
     if session[:source] == "facebook"
         redirect_to canvas_index_path, :notice => "Signed in!"
