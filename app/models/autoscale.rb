@@ -6,14 +6,14 @@ class Autoscale
   APP_NAME = 'empty-journey-469'
   @@workers
     def self.new_user_autoscale(user, auth)
-      Connection.delay.create_connections(user)
-      User.delay.get_profile_pic(user)
-      Notifier.delay.welcome(user)
+      Connection.create_connections(user)
+      User.get_profile_pic(user)
+      Notifier.welcome(user)
     end
     
     def self.update_user_autoscale(user, auth)
-      Connection.delay.check_connections(user)
-      User.delay.get_profile_pic(user)
+      Connection.check_connections(user)
+      User.get_profile_pic(user)
     end
     
     def self.check_workers
