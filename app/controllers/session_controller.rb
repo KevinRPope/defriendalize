@@ -5,8 +5,8 @@ class SessionController < ApplicationController
 #    raise request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
     user = User.find_by_uid(auth["uid"])
-    Connection.facebook_fql(user, "{\"query2\":\"SELECT+url+from+url_like+WHERE+user_id=#{user.uid}\"}")
-    Connection.facebook_fql(user, "{\"query2\":\"SELECT+url,type+from+object_url+WHERE+id+IN+(SELECT+object_id+from+like+where+user_id=#{user.uid})+AND+type=\'link\'+LIMIT+500\"}")
+    #Connection.facebook_fql(user, "{\"query2\":\"SELECT+url+from+url_like+WHERE+user_id=#{user.uid}\"}")
+    #Connection.facebook_fql(user, "{\"query2\":\"SELECT+url,type+from+object_url+WHERE+id+IN+(SELECT+object_id+from+like+where+user_id=#{user.uid})+AND+type=\'link\'+LIMIT+500\"}")
 #    User.update_user_info(user, auth) 
 #    Connection.test_post_to_page(user)
 #    raise "hi there"
