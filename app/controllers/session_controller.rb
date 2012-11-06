@@ -2,17 +2,22 @@ class SessionController < ApplicationController
   protect_from_forgery :except => :deauthorize
   
   def create
-    #raise request.env["omniauth.auth"].to_yaml
+#    raise request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
-    user = User.find_by_uid(auth["uid"]) 
+    user = User.find_by_uid(auth["uid"])
+    Connection.facebook_fql(user, "{\"query2\":\"SELECT+url+from+url_like+WHERE+user_id=#{user.uid}\"}")
+    Connection.facebook_fql(user, "{\"query2\":\"SELECT+url,type+from+object_url+WHERE+id+IN+(SELECT+object_id+from+like+where+user_id=#{user.uid})+AND+type=\'link\'+LIMIT+500\"}")
+#    User.update_user_info(user, auth) 
+#    Connection.test_post_to_page(user)
+#    raise "hi there"
     if user
       User.update_user_info(user, auth)
-      Autoscale.update_user_autoscale(user, auth)
+      update_user_autoscale(user, auth)
       user_status = "existing"
     else
       user = User.create_with_omniauth(auth)
       MethodCallLog.log(user, "create_with_omniauth")
-      Autoscale.new_user_autoscale(user, auth)
+      new_user_autoscale(user, auth)
       user_status = "new"
     end
     #
@@ -20,17 +25,9 @@ class SessionController < ApplicationController
     session[:expire] = 1.day.from_now
     MethodCallLog.log(user, "login")    
     if session[:source] == "facebook"
-#      if user_status == "new"
-#        redirect_to "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://apps.facebook.com/defriendalize/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/canvas", :notice => "Signed in!"
-#      else
         redirect_to canvas_index_path, :notice => "Signed in!"
-#      end
     else
-#      if user_status == "new"
-#        redirect_to "http://www.facebook.com/dialog/feed?app_id="+auth["credentials"]["token"].to_s.split("|")[0]+"&link=http://www.defriendalize.com/&picture=http://www.defriendalize.com/images/flash-check.png&name=Defriendalize.com&caption=Track%20Your%20Friend%20List&description=Keep%20track%20of%20who%20defriends%20you%20and%20who%20has%20canceled%20their%20account.%20%20I'm%20watching%20you,%20grandma!&redirect_uri=http://www.defriendalize.com/", :notice => "Signed in!"
-#      else
         redirect_to root_path, :notice => "Signed in!"
-#      end
     end
   end
 
@@ -87,7 +84,7 @@ class SessionController < ApplicationController
     else
       session[:source]="web"
     end
-    Autoscale.check_workers
+#    Autoscale.check_workers
     redirect_to "/auth/facebook"
   end
   
