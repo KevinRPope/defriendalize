@@ -26,8 +26,8 @@ class DefriendController < ApplicationController
   end
   
   def check_my_connections
-    Autoscale.check_workers
-    Connection.delay.check_connections(User.find(session[:user_id]))
+    $Autoscale.check_workers
+    Connection.check_connections(User.find(session[:user_id]))
     redirect_to root_path
   end
   
