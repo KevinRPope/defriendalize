@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', "3.0.3"
+gem 'rails', "3.0.20"
 gem "omniauth", '0.2.0'
 gem "activerecord-import", ">= 0.2.0"
 gem 'heroku'
