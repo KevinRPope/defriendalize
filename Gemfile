@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', "3.0.20"
 gem "omniauth", '0.2.0'
-gem "activerecord-import", ">= 0.2.0"
+gem "activerecord-import", "0.2.1"
 gem 'heroku'
 gem 'delayed_job'
 gem 'jrails'
