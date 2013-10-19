@@ -34,7 +34,7 @@ class Notifier < ActionMailer::Base
   end
   
   def cron_test()
-    @num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
+    #Í@num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
     mail(:to => "pope.kevin@gmail.com", :subject => "cron job has run")
     MethodCallLog.log(User.find(1), "cron_test")
   end

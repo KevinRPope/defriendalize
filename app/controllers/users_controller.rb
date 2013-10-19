@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     @users = User.limit(10).order("created_at DESC").all
     @user_count = User.all.count
-    @num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
+    #@num_workers = @@heroku.info('empty-journey-469')[:workers].to_i
     @jobs = Delayed_Job.all
     @job_count = Delayed_Job.all.count
     
