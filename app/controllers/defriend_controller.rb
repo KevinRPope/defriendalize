@@ -1,4 +1,4 @@
-require 'heroku'
+#require 'heroku'
 
 class DefriendController < ApplicationController
   def index

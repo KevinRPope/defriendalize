@@ -12,12 +12,12 @@ class SessionController < ApplicationController
 #    raise "hi there"
     if user
       User.update_user_info(user, auth)
-      Autoscale.update_user_autoscale(user, auth)
+      #Autoscale.update_user_autoscale(user, auth)
       user_status = "existing"
     else
       user = User.create_with_omniauth(auth)
       MethodCallLog.log(user, "create_with_omniauth")
-      Autoscale.new_user_autoscale(user, auth)
+      #Autoscale.new_user_autoscale(user, auth)
       user_status = "new"
     end
     #

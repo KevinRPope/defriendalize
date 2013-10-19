@@ -1,4 +1,4 @@
-require 'heroku'
+#require 'heroku'
 require 'delayed_job'
 
 class Autoscale
