@@ -24,8 +24,8 @@ GEM
       activesupport (= 3.0.20)
       arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
-    activerecord-import (0.4.1)
-      activerecord (>= 3.0)
+    activerecord-import (0.2.1)
+      rails (~> 3.0.0rc)
     activeresource (3.0.20)
       activemodel (= 3.0.20)
       activesupport (= 3.0.20)
@@ -149,7 +149,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-import (>= 0.2.0)
+  activerecord-import (= 0.2.1)
   delayed_job
   heroku
   jrails
